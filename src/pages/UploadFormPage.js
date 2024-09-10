@@ -14,11 +14,21 @@ const UploadFormPage = () => {
   const handleFileDrop = (acceptedFiles) => {
     console.log('Files:', acceptedFiles);
   };
-
+  const nomesLista = ['Pocket-DNA', 'Dna Club Completo']; // Você pode adicionar mais nomes
+ 
   return (
     <div className="container">
       <h1>DNA CLUB - portabilidade</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label>Selecione um Nome:</label>
+          <select {...register('nomeSelecionado', { required: true })}>
+            {nomesLista.map((nome, index) => (
+              <option key={index} value={nome}>{nome}</option>
+            ))}
+          </select>
+          {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
+        </div>
         <FormField
           label="Nome"
           name="nome"
