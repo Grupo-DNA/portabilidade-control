@@ -8,7 +8,36 @@ const FileUploader = ({ onDrop }) => {
       'text/csv': ['.csv'],
       'text/tab-separated-values': ['.tsv'],
     },
-    onDrop,
+    onDrop: async (acceptedFiles) => {
+      console.log('Files:', acceptedFiles);
+
+      if (acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const response = await fetch('https://sua-api-na-aws.com/upload', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              // Adicione qualquer cabeçalho necessário, como autenticação, se for o caso.
+              // Exemplo:
+              // 'Authorization': 'Bearer seu-token'
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error('Erro ao enviar arquivo');
+          }
+
+          const result = await response.json();
+          console.log('Upload bem-sucedido:', result);
+        } catch (error) {
+          console.error('Erro ao enviar arquivo:', error);
+        }
+      }
+    },
   });
 
   return (
@@ -24,7 +53,7 @@ const FileUploader = ({ onDrop }) => {
 };
 
 const dropzoneStyles = {
-  border: '2px dashed #007bff',
+  border: '2px dashed #bb86fc',
   padding: '20px',
   cursor: 'pointer',
   textAlign: 'center',
