@@ -1,131 +1,86 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'; // Para redirecionar
 import FileUploader from '../components/FileUploader';
+import meninaCelular from '../assets/meninaCelular.png';
+import { getPresignedUrl, uploadFileToS3 } from '../services/s3Service';
+import { fetchOrderDetails } from '../services/shopifyService';
+import { sendFormData } from '../services/dynamodbservice';
 
 const UploadFormPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
 
-  const getPresignedUrl = async (file) => {
-    try {
-      const response = await fetch(`https://prgthrx905.execute-api.us-east-1.amazonaws.com/prod/upload-file?filename=${file.name}&filetype=${file.type}`);
-      const { uploadUrl } = await response.json();
-      return uploadUrl;
-    } catch (error) {
-      console.error('Erro ao obter URL pré-assinada:', error);
-      throw new Error('Erro ao obter URL pré-assinada');
-    }
-  };
-
-  const uploadFileToS3 = async (uploadUrl, file) => {
-    try {
-      const response = await fetch(uploadUrl, {
-        method: 'PUT',
-        body: file,
-        headers: {
-          'Content-Type': file.type, // Tipo de arquivo
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao fazer upload para o S3');
-      }
-
-      return uploadUrl.split('?')[0]; // Retorna a URL pública do arquivo no S3 (sem parâmetros)
-    } catch (error) {
-      console.error('Erro ao fazer upload do arquivo:', error);
-      throw error;
-    }
-  };
-
-  const sendFormData = async (formData) => {
-    try {
-      const response = await fetch('https://prgthrx905.execute-api.us-east-1.amazonaws.com/prod/dynamoDB', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nome: formData.nome,
-          cpf: formData.cpf,
-          email: formData.email,
-          nomeProduto: formData.nomeSelecionado,
-          s3fileUrl: formData.s3FileUrl
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao enviar os dados para o DynamoDB.');
-      }
-
-      const result = await response.json();
-      console.log('Sucesso:', result);
-
-    } catch (error) {
-      console.error('Erro:', error);
-    }
-  };
-
-  const onSubmit = async (data) => {
+  const handleSubmitForm = async (data) => {
     if (!file) {
       alert('Por favor, selecione um arquivo.');
       return;
     }
 
     try {
+      const orderData = await fetchOrderDetails(data.idCompra);
       const presignedUrl = await getPresignedUrl(file);
       const s3FileUrl = await uploadFileToS3(presignedUrl, file);
 
-      // Envie os dados restantes para a API (nome, CPF, email, URL do arquivo no S3)
       const formData = {
         nome: data.nome,
         cpf: data.cpf,
         email: data.email,
         nomeSelecionado: data.nomeSelecionado,
-        s3FileUrl: s3FileUrl, // URL pública do arquivo no S3
+        s3FileUrl,
+        orderDetails: orderData,
       };
 
       await sendFormData(formData);
       alert('Dados e upload bem-sucedidos!');
-
+      navigate('/loading');
     } catch (error) {
-      console.error('Erro:', error);
+      console.error('Erro ao enviar o formulário:', error);
       alert('Erro ao enviar o formulário.');
     }
   };
 
   const handleFileDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0]); // Armazena o arquivo no estado
+      setFile(acceptedFiles[0]);
     }
   };
 
-  const nomesLista = ['Pocket-DNA', 'Portabilidade-Completa', 'Trilhas Separadas','PharmaCLUB'];
+  const nomesLista = ['Ancestry', 'Atlas', '23andMe','24Genetics', 'Complete Genomics'];
 
   return (
+  <div className='main-container'>
     <div className="container">
-      <h1>Formulário com Upload</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Nome:</label>
-          <input {...register('nome', { required: true })} />
+      <h1>Upload dos seus dados genéticos</h1>
+      <form onSubmit={handleSubmit(handleSubmitForm)}>
+
+        <div className='input-container'>
+          <input type='text' id='idCompra' {...register('nome', { required: true })} placeholder=' ' />
+          <label htmlFor='idCompra'>ID da compra</label>
+          {errors.nome && <p>ID da compra é obrigatório.</p>}
+        </div>
+        
+        <div className='input-container'>
+          <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
+          <label htmlFor='nome'>Nome</label>
           {errors.nome && <p>Nome é obrigatório.</p>}
         </div>
 
-        <div>
-          <label>CPF:</label>
-          <input {...register('cpf', { required: true })} />
+        <div className='input-container'>
+          <input  type='text' {...register('cpf', { required: true })} placeholder=' ' />
+          <label htmlFor='cpf'>CPF</label>
           {errors.cpf && <p>CPF é obrigatório.</p>}
         </div>
 
-        <div>
-          <label>Email:</label>
-          <input {...register('email', { required: true })} />
+        <div className='input-container'>
+          <input type='text' {...register('email', { required: true })} placeholder=' ' />
+          <label htmlFor='email'>Email</label>
           {errors.email && <p>Email inválido.</p>}
         </div>
 
         <div>
-          <label>Selecione um Nome:</label>
+          <label>Empresa dos dados genéticos</label>
           <select {...register('nomeSelecionado', { required: true })}>
             {nomesLista.map((nome, index) => (
               <option key={index} value={nome}>{nome}</option>
@@ -133,15 +88,42 @@ const UploadFormPage = () => {
           </select>
           {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
         </div>
+        <div className="info-links">
+            <p>
+              Saiba <a href="/onde-encontrar" target="_blank" rel="noopener noreferrer">onde encontrar seus dados brutos</a>
+            </p>
+            <p>
+              Saiba mais sobre as <a href="/condicoes-de-uso" target="_blank" rel="noopener noreferrer">Condições de Uso</a>
+            </p>
+            <p>
+              Saiba <a href="/onde-encontrar" target="_blank" rel="noopener noreferrer">onde encontrar o ID da compra</a>
+            </p>
+          </div>
 
-        {/* Área de drag and drop */}
+          <div className="checkbox-container">
+            <div>
+              <input type="checkbox" id="legalResponsibility" {...register('legalResponsibility', { required: true })} />
+              <label htmlFor="legalResponsibility">Sou o responsável legal por estes dados.</label>
+              {errors.legalResponsibility && <p>É necessário confirmar a responsabilidade legal.</p>}
+            </div>
+
+            <div>
+              <input type="checkbox" id="termsAccepted" {...register('termsAccepted', { required: true })} />
+              <label htmlFor="termsAccepted">Declaro que li e aceito integralmente as condições de uso.</label>
+              {errors.termsAccepted && <p>É necessário aceitar as condições de uso.</p>}
+            </div>
+          </div>
+
         <FileUploader onDrop={handleFileDrop} />
 
         <button type="submit">Enviar</button>
       </form>
     </div>
+    <img src={meninaCelular} alt='menina no celular' className='form-image'/>
+    
+  </div>
+  
   );
 };
 
 export default UploadFormPage;
-

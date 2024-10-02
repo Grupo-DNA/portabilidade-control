@@ -1,104 +1,211 @@
-/* src/App.css */
-
+/* Corpo da página */
 body {
+  background-color: #C1B2D0;
   font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6;
+  color: #ffffff;
   margin: 0;
   padding: 0;
+  height: 100vh; /* A altura da página será de 100% da viewport */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha os itens ao topo */
 }
 
+/* Container do formulário */
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  background-color: #67428a;
+  height: 890px; /* Faz o formulário ocupar toda a altura do container principal */
+  box-shadow: none;
+  border-radius: 12px; /* Bordas arredondadas */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* O conteúdo do formulário começará no topo */
+  z-index: 2;
 }
-
-h1 {
-  font-size: 24px;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-input[type="text"], input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus, input[type="email"]:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-button[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
+/* Estilo para a área de drag and drop */
 .dropzone {
-  border: 2px dashed #007bff;
-  border-radius: 4px;
-  padding: 20px;
+  border: 2px dashed #bb86fc;
+  border-radius: 6px;
+  padding: 40px;
   text-align: center;
-  color: #007bff;
-  cursor: pointer;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: white;
   transition: background-color 0.3s ease;
 }
 
 .dropzone p {
-  margin: 0;
+  color: #bb86fc;
   font-size: 14px;
 }
 
 .dropzone:hover {
-  background-color: #e9e9e9;
+  background-color: black;
 }
 
-p {
-  color: red;
+/* Estilo da imagem */
+.form-image {
+  width: 50%; /* A imagem ocupará 50% da largura da página */
+  width: 990px; /* Limita a largura máxima da imagem */
+  height: auto; /* Mantém a proporção correta da imagem */
+  object-fit: contain; /* Garante que a imagem não seja cortada */
+  margin-left: 130px; /* Espaçamento entre a imagem e o texto */
+  z-index: 0;
+  transform: scaleX(-1); /* Espelha a imagem horizontalmente */
+}
+
+/* Container que envolve o texto e a imagem */
+.main-container {
+  display: flex;
+  justify-content: space-between; /* Espaça o texto e a imagem */
+  align-items: flex-end; /* Alinha o texto e a imagem pela parte inferior */
+  width: 100%;
+  max-width: 1200px; /* Largura máxima do contêiner */
+  height: 100vh; /* Altura total da página */
+  box-sizing: border-box;
+  padding-left: 0;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  margin-top: 100px; /* Remove a margem superior */
+}
+
+/* Contêiner do input */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Label que ficará dentro do input */
+.input-container label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #67428a;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+/* Estilo para o ícone */
+.info-section .icon {
+  display: flex; /* Centraliza a imagem */
+  justify-content: center; /* Alinha horizontalmente */
+  margin-top: 20px; /* Espaçamento entre o texto e a imagem */
+}
+
+.info-section .icon img {
+  width: 100px; /* Define um tamanho fixo apropriado para o ícone */
+  height: auto; /* Mantém a proporção da altura */
+  object-fit: contain; /* Garante que a imagem mantenha a proporção correta */
+}
+
+/* Estilo para a seção de informações */
+.info-section {
+  position: absolute;
+  top: 50%; /* Ajusta a posição vertical */
+  left: 50px; /* Posição horizontal do texto */
+  transform: translateY(-30%); /* Mantém o texto centralizado verticalmente */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px; /* Tamanho da fonte */
+  word-spacing: 5px;
+  line-height: 1.5;
+  color: #ffffff;
+  max-width: 35%; /* Garante que o texto não ultrapasse 35% da tela */
+}
+
+/* Estilo do input */
+.input-container input {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid transparent;
+  border-radius: 9px;
+  padding-right:0;
+  background-color: white;
+  color:black;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilo do input quando está focado */
+.input-container input:focus {
+  outline: none;
+  border-color: #bb86fc;
+  box-shadow: 0 0 8px rgba(187, 134, 252, 0.6);
+}
+
+/* Mover o label para cima quando o input está focado ou preenchido */
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: black;
+  background-color: transparent;
+  padding: 0 5px;
+}
+
+/* Estilo para o botão de envio */
+button {
+  background-color: #c84375;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+/* Links informativos */
+.info-links {
+  margin-top: 20px;
   font-size: 14px;
+  color: white;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  input[type="text"], input[type="email"], button[type="submit"] {
-    font-size: 14px;
-  }
+.info-links a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
+/* Checkbox container */
+.checkbox-container {
+  margin-top: 20px;
+}
+
+.checkbox-container div {
+  display: flex; /* Alinha o checkbox e o label na mesma linha */
+  align-items: center; /* Alinha verticalmente o checkbox e o texto */
+  margin-bottom: 10px;
+}
+
+.checkbox-container input {
+  transform: scale(1.3); /* Aumenta o tamanho da caixa de seleção */
+  margin-right: 8px; /* Aproxima o texto da caixa de seleção */
+}
+
+.checkbox-container label {
+  font-size: 14px;
+  color: white;
+}
+
+
+button:hover {
+  background-color: #9c71e0;
+}
+
+/* Animação de fade in para o container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

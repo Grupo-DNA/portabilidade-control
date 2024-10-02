@@ -1,31 +1,31 @@
 /* Corpo da página */
 body {
-  background-color: #1c1c1e;
+  background-color: #C1B2D0;
   font-family: 'Arial', sans-serif;
   color: #ffffff;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
 /* Container do formulário */
 .container {
-  background-color: #2a2a2e;
+  background-color: #67428a;
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  width: 100%;
-  max-width: 400px;
+
+  position: absolute;  /* Para posicionar o formulário */
+  top: 50%;  /* Centraliza verticalmente */
+  right: 20px;  /* Adiciona margem da direita */
+  transform: translateY(-50%);  /* Ajusta para centralizar verticalmente */
   animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Título */
 h1 {
   text-align: center;
-  color: #bb86fc;
+  color: white;
   margin-bottom: 30px;
 }
 
@@ -40,77 +40,3 @@ label {
   font-weight: bold;
   color: #bb86fc;
 }
-
-input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #4a4a4f;
-  border-radius: 6px;
-  background-color: #3a3a3e;
-  color: white;
-  transition: border-color 0.3s ease;
-}
-
-/* Animação para campos de entrada ao foco */
-input:focus {
-  outline: none;
-  border-color: #bb86fc;
-  box-shadow: 0 0 8px rgba(187, 134, 252, 0.6);
-}
-
-/* Mensagens de erro */
-p {
-  color: #ff4a4a;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* Estilo para o botão de envio */
-button {
-  background-color: #bb86fc;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #9c71e0;
-}
-
-/* Estilo para a área de drag and drop */
-.dropzone {
-  border: 2px dashed #bb86fc;
-  border-radius: 6px;
-  padding: 40px;
-  text-align: center;
-  background-color: #3a3a3e;
-  color: #bb86fc;
-  transition: background-color 0.3s ease;
-}
-
-.dropzone p {
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.dropzone:hover {
-  background-color: #4a4a4f;
-}
-
-/* Animação de fade in para o container */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
