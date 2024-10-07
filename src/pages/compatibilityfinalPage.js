@@ -1,6 +1,7 @@
 import React from 'react';
 import CompatibilityPage from './CompatibilidadePage'; // Importa o componente CompatibilityPage
 import EcosystemPage from './aboutUS';
+import ScrollArrow from '../components/setaScroll';
 import './afterCompatibility.css';
 import { useLocation } from 'react-router-dom';
 
@@ -19,12 +20,7 @@ const MainPage = () => {
       <main>
         {/* Exibe a CompatibilityPage */}
         <CompatibilityPage compatibilityValue={compatibilityValue} />
-        
-        {/* Seta para indicar que há mais conteúdo abaixo */}
-        <div className="scroll-indicator" onClick={scrollToEcosystem}>
-          ⬇️ {/* A seta, que ao ser clicada rola a página */}
-        </div>
-        
+                
         {/* Seção da EcosystemPage */}
         <div id="ecosystem-section">
           <EcosystemPage />

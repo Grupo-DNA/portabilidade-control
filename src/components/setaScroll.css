@@ -1,0 +1,21 @@
+.scroll-arrow {
+    font-size: 2.5rem;
+    color: #6a3a97;
+    cursor: pointer;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Animação para a seta "pular" */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
