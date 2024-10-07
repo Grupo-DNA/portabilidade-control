@@ -5,19 +5,21 @@
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-color: #f0e6f6;
-  padding: 5%; /* Espaçamento responsivo */
-  background-image: url('../assets/fundoBolinhas.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-image: url('../assets/fundoBolinhas.gif');
+  width: 100%; /* Define a largura para preencher toda a tela */
+  max-width: none; /* Remove o limite do max-width */
+  margin: 0;
 }
+
 
 .compatibility-container h1 {
   color: #6a3a97;
-  font-size: 4vw; /* Tamanho de fonte responsivo */
-  margin-bottom: 5%; /* Espaçamento entre o título e a imagem */
+  font-size: 3vw; /* Tamanho de fonte responsivo */
+  margin-bottom: 1vh; /* Espaçamento entre o título e a imagem */
   font-family: 'Open Sans';
 }
 
@@ -25,7 +27,6 @@
   position: relative;
   width: 80%; /* Controla o tamanho da imagem, será 80% da tela */
   max-width: 700px; /* Define um limite máximo para a imagem */
-  margin-bottom: 5%; /* Espaçamento entre a imagem e o conteúdo seguinte */
 }
 
 .image-container img {
@@ -39,25 +40,49 @@
   top: 50%; /* Centraliza verticalmente */
   left: 50%; /* Centraliza horizontalmente */
   transform: translate(-50%, -90%); /* Ajuste para centralização perfeita */
-  font-size: 2vw; /* Tamanho de fonte responsivo */
+  font-size: 1vw; /* Tamanho de fonte responsivo */
   color: #492681;
   font-family: 'Montserrat-Regular';
 }
 
 .compatibility-container p {
-  font-size: 2vw; /* Tamanho de fonte responsivo */
+  font-size: 1.4vw; /* Tamanho de fonte responsivo */
   color: #6a3a97;
   font-family: 'Helvetica';
+  max-width: 100%;
 }
 
 .compatibility-container a {
   color: #6a3a97;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1vw; /* Tamanho de fonte responsivo */
+  font-size: 0.7vw; /* Tamanho de fonte responsivo */
   font-family: 'Open Sans';
 }
 
 .compatibility-container a:hover {
+  text-decoration: underline;
+}
+
+.text-section-compatibility {
+  max-width: 1000px; /* Define a largura máxima da div que contém o texto */
+  margin: 0 auto; /* Centraliza o container */
+  text-align: center; /* Alinha o texto à esquerda */
+}
+
+.text-section-compatibility p {
+  font-size: 1.4vw; /* Tamanho de fonte responsivo */
+  color: #6a3a97;
+  font-family: 'Helvetica';
+  line-height: 1.0; /* Espaçamento entre linhas */
+}
+
+.text-section-compatibility a {
+  color: #6a3a97;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.text-section-compatibility a:hover {
   text-decoration: underline;
 }

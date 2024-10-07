@@ -1,0 +1,98 @@
+.ecosystem-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 5%;
+}
+
+.ecosystem-container h1 {
+  color: #6a3a97; /* Cor roxa usada no texto */
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.ecosystem-container p {
+  font-size: 1.5rem;
+  color: #6a3a97;
+  margin-bottom: 2rem;
+}
+
+.ecosystem-section {
+  display: flex;
+  flex-direction: column; /* Alinha os itens um abaixo do outro */
+  align-items: center;
+}
+
+.ecosystem-item {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  max-width: 600px; /* Controla a largura máxima de cada item */
+}
+
+.icon-circle {
+  width: 100px; /* Tamanho dos ícones */
+  height: 100px;
+  background-color: #6a3a97;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px; /* Espaçamento entre o ícone e o texto */
+}
+
+.icon-circle img {
+  width: 120px; /* Ajusta o tamanho da imagem dentro do ícone */
+  height: auto;
+}
+
+.ecosystem-item-content {
+  display: flex;
+  flex-direction: column; /* Garante que o h2 e o p fiquem em colunas */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.ecosystem-item h2 {
+  font-size: 1.6rem; /* Tamanho do título */
+  color: #6a3a97;
+  margin-bottom: 10px;
+}
+
+.ecosystem-item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0; /* Remove margem extra para ajustar o espaçamento */
+}
+
+.ecosystem-item.reverse {
+  flex-direction: row-reverse; /* Inverte o ícone e o texto */
+}
+
+.ecosystem-item.reverse .icon-circle {
+  margin-right: 0;
+  margin-left: 20px; /* Ajusta o espaçamento para o ícone à direita */
+}
+
+@media (max-width: 768px) {
+  .ecosystem-item {
+    flex-direction: column; /* Empilha ícone e texto verticalmente em telas menores */
+    align-items: center; /* Centraliza o ícone e texto */
+    text-align: center; /* Centraliza o texto em dispositivos menores */
+  }
+
+  .icon-circle {
+    margin-right: 0;
+    margin-bottom: 10px; /* Adiciona espaçamento entre o ícone e o texto em telas menores */
+  }
+
+  .ecosystem-item-content {
+    text-align: center; /* Centraliza o texto em dispositivos menores */
+  }
+
+  .ecosystem-item h2 {
+    font-size: 1.4rem; /* Reduz o tamanho do título */
+  }
+
+  .ecosystem-container h1 {
+    font-size: 2.5rem; /* Reduz o tamanho do título em telas pequenas */
+  }
+}

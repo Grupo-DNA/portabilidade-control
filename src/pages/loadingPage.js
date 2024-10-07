@@ -23,7 +23,7 @@ const LoadingPage = () => {
           const result = await response.json();
           console.log('Resultado da API:', result);
           console.log('compatbilidade', result.data)
-          navigate('/compatibility', { state: { compatibilityValue: result.data } });
+          navigate('/ecosystem', { state: { compatibilityValue: result.data } });
         } else {
           console.error('Erro ao fazer a requisição à API:', response.statusText);
           navigate('/error');

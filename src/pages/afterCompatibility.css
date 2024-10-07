@@ -1,0 +1,33 @@
+.main-page-container {
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start; /* Garante que o conteúdo comece do topo */
+  width: 100%; /* O container principal ocupa toda a largura da página */
+  min-height: 100vh; /* Garante que o container ocupe ao menos 100% da altura da viewport */
+}
+
+.scroll-indicator {
+  font-size: 2rem;
+  color: #6a3a97;
+  cursor: pointer;
+  margin: 20px 0; /* Espaçamento da seta */
+  animation: bounce 2s infinite; /* Animação para a seta "pular" */
+}
+
+/* Animação para fazer a seta pular */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* EcosystemPage section */
+#ecosystem-section {
+  margin-top: 50px;
+  padding: 20px;
+  width: 100%; /* Garante que a seção também ocupe toda a largura */
+  background-color: #f0f0f0; /* Cor de fundo diferente para destacar a seção */
+}

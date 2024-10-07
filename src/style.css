@@ -7,36 +7,3 @@ body {
   padding: 0;
   height: 100vh;
 }
-
-/* Container do formulário */
-.container {
-  background-color: #67428a;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-
-  position: absolute;  /* Para posicionar o formulário */
-  top: 50%;  /* Centraliza verticalmente */
-  right: 20px;  /* Adiciona margem da direita */
-  transform: translateY(-50%);  /* Ajusta para centralizar verticalmente */
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Título */
-h1 {
-  text-align: center;
-  color: white;
-  margin-bottom: 30px;
-}
-
-/* Estilo para os campos de formulário */
-form div {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #bb86fc;
-}
