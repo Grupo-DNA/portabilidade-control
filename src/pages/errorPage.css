@@ -1,0 +1,64 @@
+/* Estilos da página de erro */
+.error-page-container {
+  background-color: #e5e5e5;
+  height: 100vh; /* Garante que a altura ocupe a tela inteira */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  flex-direction: column; /* Centraliza o conteúdo verticalmente */
+  width: 100vw; /* Garante que a largura ocupe a tela inteira */
+}
+
+.error-content {
+  padding: 40px;
+  border-radius: 10px;
+  width: 100%; /* O conteúdo ocupa toda a largura */
+  max-width: 1000px; /* Define uma largura máxima opcional */
+}
+
+.error-content h1 {
+  font-size: 36px;
+  color: #6a3a97;
+  margin-bottom: 20px;
+}
+
+.error-content p {
+  font-size: 18px;
+  color: #6a3a97;
+  line-height: 1.6;
+}
+
+.error-icon {
+  width: 475px; /* Tamanho do ícone */
+  height: 280px;
+  margin-bottom: 20px;
+}
+
+.dna-club-logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+}
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+  .error-content {
+    padding: 20px;
+  }
+
+  .error-content h1 {
+    font-size: 28px;
+  }
+
+  .error-content p {
+    font-size: 16px;
+  }
+
+  .error-icon {
+    width: 80px;
+    height: 80px;
+  }
+}

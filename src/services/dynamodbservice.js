@@ -1,6 +1,6 @@
 export const sendFormData = async (formData) => {
     try {
-      const response = await fetch('https://1marrj7oz6.execute-api.us-east-1.amazonaws.com/prod/dynamoDB', {
+      const response = await fetch('https://twe0vlzezc.execute-api.us-east-1.amazonaws.com/dev/dynamoDB', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

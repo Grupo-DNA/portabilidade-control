@@ -1,0 +1,31 @@
+/* Estilo da seção de informações */
+.info-section {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    word-spacing: 5px;
+    line-height: 1.5;
+    color: #ffffff;
+    max-width: 100%; /* Garante que o texto não ultrapasse 100% da tela */
+    margin-bottom: 20px;
+    z-index: 2
+    
+  }
+  
+  /* Estilo do ícone */
+  .info-section .icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .info-section .icon img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .info-section p {
+    margin: 0;
+    padding: 10px 0;
+  }
+  
