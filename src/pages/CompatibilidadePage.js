@@ -1,6 +1,7 @@
 import React from 'react';
 import arcoROXO from '../assets/arcoDnaRoxo.png';
 import './compatibilidade.css';
+import ScrollArrow from '../components/setaScroll';
 
 const CompatibilityPage = ({ compatibilityValue }) => {
   const roundedCompatibilityValue = Math.round(compatibilityValue);
@@ -17,6 +18,7 @@ const CompatibilityPage = ({ compatibilityValue }) => {
         <p>Seu <b>laudo já está disponível</b> e você receberá um <b>e-mail com o acesso</b></p>
         <p>Se tiver dúvidas ou precisar de assistência, entre em contato conosco clicando <a href="/contato">aqui</a>.</p>
       </div>
+      <ScrollArrow targetId="ecosystem-section" />
     </div>
   );
 };

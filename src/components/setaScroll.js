@@ -1,5 +1,6 @@
 import React from 'react';
 import './setaScroll.css'; // Estilos da seta
+import { FaArrowDown } from "react-icons/fa";
 
 const ScrollArrow = ({ targetId }) => {
   // Função para rolar até o elemento de destino
@@ -12,7 +13,7 @@ const ScrollArrow = ({ targetId }) => {
 
   return (
     <div className="scroll-arrow" onClick={scrollToTarget}>
-      ⬇️ {/* A seta que será renderizada */}
+      <FaArrowDown />
     </div>
   );
 };

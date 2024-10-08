@@ -1,7 +1,7 @@
 export const fetchOrderDetails = async (idCompra) => {
   console.log('id compra shopify service front',idCompra)
   try {
-    const response = await fetch(`https://twe0vlzezc.execute-api.us-east-1.amazonaws.com/dev/shopify-info?idCompra=${idCompra}`, {
+    const response = await fetch(`https://fi6f1hiuja.execute-api.us-east-1.amazonaws.com/dev/shopify-info?idCompra=${idCompra}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import dnaGIF from '../assets/dnaGIF.gif';
+import './loadingpage.css'
 
 const LoadingPage = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ const LoadingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://twe0vlzezc.execute-api.us-east-1.amazonaws.com/dev/dynamoDB?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`https://fi6f1hiuja.execute-api.us-east-1.amazonaws.com/dev/dynamoDB?email=${encodeURIComponent(email)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -43,7 +44,6 @@ const LoadingPage = () => {
     <div className="loading-container">
       {loading ? (
         <>
-          <h1>Carregando...</h1>
           <img src={dnaGIF} alt="Loading" className="loading-gif" />
         </>
       ) : null}

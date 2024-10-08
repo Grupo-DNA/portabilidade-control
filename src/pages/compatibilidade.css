@@ -37,10 +37,10 @@
 
 .image-container h2 {
   position: absolute;
-  top: 50%; /* Centraliza verticalmente */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translate(-50%, -90%); /* Ajuste para centralização perfeita */
-  font-size: 1vw; /* Tamanho de fonte responsivo */
+  top: 42%; /* Centraliza verticalmente */
+  left: 52%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajuste para centralização perfeita */
+  font-size: 3vw; /* Tamanho de fonte responsivo */
   color: #492681;
   font-family: 'Montserrat-Regular';
 }

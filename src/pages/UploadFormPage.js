@@ -91,125 +91,118 @@ const UploadFormPage = () => {
   };
 
   return (
-    <div className='main-container'>
-      <InfoSection/>
-      <div className="container">
-        <h1>Upload dos seus dados genéticos</h1>
-        <form onSubmit={handleSubmit(handleSubmitForm)}>
+<div className='main-container'>
+  <div className='info-secion'>
+    <InfoSection/>
+  </div>
+  <div className='img-forms'>
+    <img src={meninaCelular} alt='menina no celular' className='form-image'/>
+  </div>
+  <div className="container">
+    <h1>Upload dos seus dados genéticos</h1>
+    <form onSubmit={handleSubmit(handleSubmitForm)}>
+      <div className='input-container'>
+        <input
+          type='text' 
+          id='idCompra' 
+          {...register('idCompra', { required: true })} 
+          placeholder=' ' 
+          style={{
+            borderColor: errors.idCompra ? 'red' : isValidOrder ? 'green' : 'black'
+          }}
+        />
+        <label htmlFor='idCompra'>ID da compra</label>
+        {errors.idCompra && <p>{errors.idCompra.message || 'ID da compra é obrigatório.'}</p>}
+      </div>
 
-          {/* Campo do ID da compra */}
-          <div className='input-container'>
-            <input 
-              type='text' 
-              id='idCompra' 
-              {...register('idCompra', { required: true })} 
-              placeholder=' ' 
-              style={{
-                borderColor: errors.idCompra ? 'red' : isValidOrder ? 'green' : 'black'
-              }}
-            />
-            <label htmlFor='idCompra'>ID da compra</label>
-            {errors.idCompra && <p>{errors.idCompra.message || 'ID da compra é obrigatório.'}</p>}
-          </div>
+      {/* Botão para validar o ID da compra */}
+      {!isValidOrder && (
+        <button type="button" onClick={validateOrderId} disabled={isValidating}>
+          {isValidating ? 'Validando...' : 'Validar ID da compra'}
+        </button>
+      )}
 
-          {/* Botão para validar o ID da compra */}
-          {!isValidOrder && (
-            <button type="button" onClick={validateOrderId} disabled={isValidating}>
-              {isValidating ? 'Validando...' : 'Validar ID da compra'}
-            </button>
-          )}
+      {/* Animação suave para expandir o formulário quando o ID é válido */}
+      <div className={`expanded-form ${isValidOrder ? 'open' : ''}`}>
+        {isValidOrder && (
+          <>
+            <div className='input-container'>
+              <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
+              <label htmlFor='nome'>Nome</label>
+              {errors.nome && <p>Nome é obrigatório.</p>}
+            </div>
 
-          {/* Mostrar o restante do formulário somente se o ID da compra for válido */}
-          {isValidOrder && (
-            <>
-              <div className='input-container'>
-                <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
-                <label htmlFor='nome'>Nome</label>
-                {errors.nome && <p>Nome é obrigatório.</p>}
-              </div>
+            <div className='input-container'>
+              <input type='text' {...register('cpf', { required: true })} placeholder=' ' />
+              <label htmlFor='cpf'>CPF</label>
+              {errors.cpf && <p>CPF é obrigatório.</p>}
+            </div>
 
-              <div className='input-container'>
-                <input type='text' {...register('cpf', { required: true })} placeholder=' ' />
-                <label htmlFor='cpf'>CPF</label>
-                {errors.cpf && <p>CPF é obrigatório.</p>}
-              </div>
+            <div className='input-container'>
+              <input type='text' {...register('email', { required: true })} placeholder=' ' />
+              <label htmlFor='email'>Email</label>
+              {errors.email && <p>Email inválido.</p>}
+            </div>
 
-              <div className='input-container'>
-                <input type='text' {...register('email', { required: true })} placeholder=' ' />
-                <label htmlFor='email'>Email</label>
-                {errors.email && <p>Email inválido.</p>}
-              </div>
-
-              {isValidOrder && orderData && (
-                <div className="order-selection">
-                  <h3>Selecione o produto que deseja:</h3>
-                  <div className="product-container">
-                    {orderData.line_items?.map((item, index) => (
-                      <label key={index} className="product-box">
-                        <input 
-                          type="radio" 
-                          name="selectedProduct" 
-                          value={item.name} 
-                          {...register('selectedProduct', { required: true })}
-                        />
-                        <div className="product-details">
-                          <h4>{item.name}</h4>
-                          <p>Quantidade: {item.quantity}</p>
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                  {errors.selectedProduct && <p>Por favor, selecione um produto.</p>}
+            {orderData && (
+              <div className="order-selection">
+                <h3>Selecione o produto que deseja:</h3>
+                <div className="product-container">
+                  {orderData.line_items?.map((item, index) => (
+                    <label key={index} className="product-box">
+                      <input 
+                        type="radio" 
+                        name="selectedProduct" 
+                        value={item.name} 
+                        {...register('selectedProduct', { required: true })}
+                      />
+                      <div className="product-details">
+                        <h4>{item.name}</h4>
+                        <p>Quantidade: {item.quantity}</p>
+                      </div>
+                    </label>
+                  ))}
                 </div>
-              )}
+                {errors.selectedProduct && <p>Por favor, selecione um produto.</p>}
+              </div>
+            )}
+
+            <div>
+              <label>Empresa dos dados genéticos</label>
+              <select {...register('nomeSelecionado', { required: true })}>
+                {nomesLista.map((nome, index) => (
+                  <option key={index} value={nome}>{nome}</option>
+                ))}
+              </select>
+              {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
+            </div>
+
+            <div className="checkbox-container">
+              <div>
+                <input type="checkbox" id="legalResponsibility" {...register('legalResponsibility', { required: true })} />
+                <label htmlFor="legalResponsibility">Sou o responsável legal por estes dados.</label>
+                {errors.legalResponsibility && <p>É necessário confirmar a responsabilidade legal.</p>}
+              </div>
 
               <div>
-                <label>Empresa dos dados genéticos</label>
-                <select {...register('nomeSelecionado', { required: true })}>
-                  {nomesLista.map((nome, index) => (
-                    <option key={index} value={nome}>{nome}</option>
-                  ))}
-                </select>
-                {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
+                <input type="checkbox" id="termsAccepted" {...register('termsAccepted', { required: true })} />
+                <label htmlFor="termsAccepted">Declaro que li e aceito integralmente as condições de uso.</label>
+                {errors.termsAccepted && <p>É necessário aceitar as condições de uso.</p>}
               </div>
-              <div className="info-links">
-                  <p>
-                    Saiba <a href="/onde-encontrar" target="_blank" rel="noopener noreferrer">onde encontrar seus dados brutos</a>
-                  </p>
-                  <p>
-                    Saiba mais sobre as <a href="/condicoes-de-uso" target="_blank" rel="noopener noreferrer">Condições de Uso</a>
-                  </p>
-                  <p>
-                    Saiba <a href="/onde-encontrar" target="_blank" rel="noopener noreferrer">onde encontrar o ID da compra</a>
-                  </p>
-                </div>
+            </div>
 
-                <div className="checkbox-container">
-                  <div>
-                    <input type="checkbox" id="legalResponsibility" {...register('legalResponsibility', { required: true })} />
-                    <label htmlFor="legalResponsibility">Sou o responsável legal por estes dados.</label>
-                    {errors.legalResponsibility && <p>É necessário confirmar a responsabilidade legal.</p>}
-                  </div>
+            <FileUploader onDrop={handleFileDrop} />
 
-                  <div>
-                    <input type="checkbox" id="termsAccepted" {...register('termsAccepted', { required: true })} />
-                    <label htmlFor="termsAccepted">Declaro que li e aceito integralmente as condições de uso.</label>
-                    {errors.termsAccepted && <p>É necessário aceitar as condições de uso.</p>}
-                  </div>
-                </div>
-
-              <FileUploader onDrop={handleFileDrop} />
-
-              <button type="submit" disabled={isLoading}>
-                {isLoading ? 'Enviando...' : 'Enviar'}
-              </button>
-            </>
-          )}
-        </form>
-        
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? 'Enviando...' : 'Enviar'}
+            </button>
+          </>
+        )}
       </div>
-      <img src={meninaCelular} alt='menina no celular' className='form-image'/>
-    </div>
+    </form>
+  </div>
+</div>
+
   );
 };
 

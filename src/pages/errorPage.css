@@ -1,6 +1,6 @@
 /* Estilos da página de erro */
 .error-page-container {
-  background-color: #e5e5e5;
+  background-color: #ada8a8;
   height: 100vh; /* Garante que a altura ocupe a tela inteira */
   display: flex;
   justify-content: center;

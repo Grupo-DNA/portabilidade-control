@@ -1,26 +1,29 @@
-/* Estilo global do formulário */
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #C1B2D0;
-    z-index: 1;
-}
-
 .main-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 100%;
     padding: 40px;
     box-sizing: border-box;
     gap: 20px;
     background-color: #C1B2D0;
-    flex-wrap: nowrap; /* Mantém tudo na mesma linha */
 }
+
+/* Animação do formulário */
+.expanded-form {
+    overflow: hidden;
+    height: 0; /* Inicialmente colapsado */
+    opacity: 0;
+    transition: height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Quando o formulário está aberto */
+.expanded-form.open {
+    height: auto; /* Permite expansão automática */
+    opacity: 1;
+    transition: height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
 /* Container do formulário */
 .container {
     background-color: #67428a;
@@ -28,7 +31,6 @@
     border-radius: 12px;
     width: 100%;
     max-width: 700px; /* Largura fixa do formulário */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
 
@@ -38,10 +40,8 @@
     height: auto;
     margin-right: -200px;
     object-fit: contain;
-    z-index: 0;
     transform: scaleX(-1); /* Espelha a imagem horizontalmente */
     margin-top: 100px;
-
 }
 
 /* Título */
@@ -147,6 +147,7 @@ button:disabled {
 .product-container {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 5%;
     gap: 16px;
 }
 
@@ -164,8 +165,9 @@ button:disabled {
 }
 
 .product-details h4 {
+    color: black;
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .product-details p {
@@ -184,7 +186,6 @@ button:disabled {
     text-decoration: underline;
 }
 
-/* Estilo para checkboxes */
 .checkbox-container {
     margin-top: 20px;
 }
@@ -193,13 +194,20 @@ button:disabled {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    gap: 10px; /* Espaçamento entre o checkbox e o rótulo */
 }
 
 .checkbox-container input {
     margin-right: 8px;
-    transform: scale(1.3);
+    transform: scale(1.3); /* Tamanho do checkbox aumentado */
+    cursor: pointer;
 }
 
+.checkbox-container label {
+    font-size: 16px;
+    color: #fff; /* Cor do texto do rótulo */
+    cursor: pointer;
+}
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .main-container {

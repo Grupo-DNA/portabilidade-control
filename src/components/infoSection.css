@@ -1,5 +1,6 @@
 /* Estilo da seção de informações */
 .info-section {
+    margin-top: 40%;
     font-family: 'Montserrat', sans-serif;
     font-size: 35px;
     word-spacing: 5px;
@@ -14,11 +15,12 @@
   /* Estilo do ícone */
   .info-section .icon {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    margin-top: 10%;
+    margin-left: 20%;
   }
   
   .info-section .icon img {
+    
     width: 100px;
     height: auto;
     object-fit: contain;

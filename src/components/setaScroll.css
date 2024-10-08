@@ -1,15 +1,26 @@
 .scroll-arrow {
-    font-size: 2.5rem;
-    color: #6a3a97;
-    cursor: pointer;
-    margin: 20px 0;
-    animation: bounce 2s infinite;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Faz com que a seta tenha bordas arredondadas */
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    color: black;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo transparente */
   }
   
-  /* Animação para a seta "pular" */
+  .scroll-arrow span {
+    font-size: 3rem;
+    color: #6a3a97; /* Cor roxa para a seta */
+  }
+  
+  .scroll-arrow:hover {
+    background-color: rgba(106, 58, 151, 0.2); /* Fundo roxo transparente ao passar o mouse */
+    transform: scale(1.1); /* Aumenta levemente o tamanho ao passar o mouse */
+  }
+  
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);
@@ -17,5 +28,10 @@
     50% {
       transform: translateY(-10px);
     }
+  }
+  
+  /* Adiciona a animação de bounce na seta */
+  .scroll-arrow {
+    animation: bounce 2s infinite;
   }
   

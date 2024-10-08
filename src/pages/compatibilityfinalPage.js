@@ -9,6 +9,9 @@ const MainPage = () => {
   const location = useLocation();
   const { compatibilityValue } = location.state || {}; // Recebe o valor do estado passado pela navegação
 
+
+  //chamada da api para gerar laudo ( passar nome e email na url.)
+
   // Função para rolar suavemente até a EcosystemPage
   const scrollToEcosystem = () => {
     const ecosystemSection = document.getElementById('ecosystem-section');
