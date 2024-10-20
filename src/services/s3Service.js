@@ -1,6 +1,6 @@
 export const getPresignedUrl = async (file) => {
     try {
-      const response = await fetch(`https://fi6f1hiuja.execute-api.us-east-1.amazonaws.com/dev/upload-file?filename=${file.name}&filetype=${file.type}`);
+      const response = await fetch(`https://9smyqqiekf.execute-api.us-east-1.amazonaws.com/dev/upload-file?filename=${file.name}&filetype=${file.type}`);
       const { uploadUrl } = await response.json();
       return uploadUrl;
     } catch (error) {

@@ -5,11 +5,7 @@
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-image: url('../assets/fundoBolinhas.gif');
+
   width: 100%; /* Define a largura para preencher toda a tela */
   max-width: none; /* Remove o limite do max-width */
   margin: 0;

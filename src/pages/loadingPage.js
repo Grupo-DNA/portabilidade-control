@@ -13,7 +13,7 @@ const LoadingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://fi6f1hiuja.execute-api.us-east-1.amazonaws.com/dev/dynamoDB?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`https://9smyqqiekf.execute-api.us-east-1.amazonaws.com/dev/dynamoDB?email=${encodeURIComponent(email)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -7,9 +7,9 @@
     box-sizing: border-box;
     gap: 20px;
     background-color: #C1B2D0;
+    align-items: stretch;
 }
 
-/* Animação do formulário */
 .expanded-form {
     overflow: hidden;
     height: 0; /* Inicialmente colapsado */
@@ -17,38 +17,38 @@
     transition: height 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-/* Quando o formulário está aberto */
 .expanded-form.open {
-    height: auto; /* Permite expansão automática */
+    height: auto;
     opacity: 1;
     transition: height 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-/* Container do formulário */
 .container {
     background-color: #67428a;
     padding: 40px;
     border-radius: 12px;
     width: 100%;
-    max-width: 700px; /* Largura fixa do formulário */
+    max-width: 700px;
     z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo do formulário verticalmente */
 }
 
-/* Tamanho fixo da imagem e proximidade com o formulário */
 .form-image {
-    width: 900px; /* Tamanho fixo da imagem */
-    height: auto;
+    height: 100vh;
+    width: auto;
     margin-right: -200px;
     object-fit: contain;
-    transform: scaleX(-1); /* Espelha a imagem horizontalmente */
-    margin-top: 100px;
+    transform: scaleX(-1);
+    margin-top: 0;
 }
 
-/* Título */
 h1 {
     color: white;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
 }
 
 /* Campo de input */
@@ -208,6 +208,7 @@ button:disabled {
     color: #fff; /* Cor do texto do rótulo */
     cursor: pointer;
 }
+
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .main-container {
@@ -221,7 +222,8 @@ button:disabled {
     }
 
     .form-image {
-        width: 200px; /* Tamanho menor para dispositivos móveis */
+        height: 400px; /* Altura menor para dispositivos móveis */
+        width: auto;
         margin-bottom: 20px;
     }
 }

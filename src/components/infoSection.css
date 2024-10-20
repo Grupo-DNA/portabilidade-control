@@ -6,11 +6,10 @@
     word-spacing: 5px;
     line-height: 1.5;
     color: #ffffff;
-    max-width: 100%; /* Garante que o texto não ultrapasse 100% da tela */
+    max-width: 100%;
     margin-bottom: 20px;
     z-index: 2
-    
-  }
+}
   
   /* Estilo do ícone */
   .info-section .icon {

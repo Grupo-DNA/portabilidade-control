@@ -10,10 +10,6 @@ const ErrorPage = () => {
         <h1>PORTABILIDADE NÃO EFETUADA</h1>
         <img src={sadFace} alt="Sad Face" className="error-icon" />
         <p>
-          Desculpe, sua <strong>portabilidade não pôde ser concluída</strong> devido a um erro interno.
-          <br />
-          Estamos aprimorando nosso sistema para evitar esses problemas no futuro.
-          <br />
           Em breve, <strong>você receberá um e-mail com detalhes e orientações sobre os próximos passos.</strong>
           <br />
           Agradecemos sua paciência e compreensão.

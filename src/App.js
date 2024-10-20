@@ -1,11 +1,10 @@
 import React from 'react';
 import UploadFormPage from './pages/UploadFormPage';
 import LoadingPage from './pages/loadingPage';
-import InfoSection from './components/infoSection';
 import MainPage from './pages/compatibilityfinalPage';
 import ErrorPage from './pages/ErrorPage';
-import EcosystemPage from './pages/aboutUS';
 import CompatibilityPage from './pages/CompatibilidadePage';
+import Footer from './pages/footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import './style.css'
@@ -21,6 +20,7 @@ function App() {
         <Route path='/compatibility' element={<CompatibilityPage/>} />
         <Route path='/ecosystem' element={<MainPage/>} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }
