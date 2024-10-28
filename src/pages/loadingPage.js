@@ -37,7 +37,7 @@ const LoadingPage = () => {
       }
     };
 
-    setTimeout(fetchData, 15000);
+    setTimeout(fetchData, 12000);
   }, [email, navigate]);
 
   return (

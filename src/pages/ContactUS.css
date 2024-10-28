@@ -1,0 +1,106 @@
+/* Estilo geral para o container */
+.contact-container {
+    padding: 40px;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  header h1 {
+    font-family: 'Opens Sans',sans-serif;
+    margin-bottom: 3%;
+    color: #6f2da8; /* Cor roxa do título */
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    font-family: 'Opens Sans',sans-serif;
+    margin-bottom: 5%;
+    color: #6f2da8;
+    font-size: 1.2rem;
+  }
+  
+  /* Seção de conteúdo */
+  .contact-content {
+    display: flex;
+    margin-left: 8%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .profile-section {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .profile-pic {
+    margin-left: 10%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .text-section {
+    flex: 2;
+    padding-left: 20px;
+    text-align: left;
+  }
+  
+  .text-section h2 {
+    font-family: 'Opens Sans',sans-serif;
+    font-size: 1.8rem;
+    color: #6f2da8;
+    margin-bottom: 15px;
+  }
+  
+  .text-section p {
+    font-family: 'Opens Sans',sans-serif;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .button-group {
+    margin-top: 20px;
+    display: flex;
+}
+  
+  .btn {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* Botão primário */
+  .primary-btn {
+    background-color: #6f2da8;
+    color: white;
+  }
+  
+  .primary-btn:hover {
+    background-color: #5c2391; /* Cor mais escura no hover */
+  }
+  
+  /* Botão secundário */
+  .secondary-btn {
+    background-color: #a18ee3;
+    color: white;
+  }
+  
+  .secondary-btn:hover {
+    background-color: #8c76d5;
+  }
+  
+  /* Rodapé */
+  footer {
+    margin-top: 30px;
+  }
+  
+  .dna-club-logo {
+    width: 100px;
+    margin-top: 20px;
+  }
+  

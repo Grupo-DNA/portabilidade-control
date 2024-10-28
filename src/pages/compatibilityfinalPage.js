@@ -1,5 +1,6 @@
 import React from 'react';
 import CompatibilityPage from './CompatibilidadePage';
+import ContactUs from './ContactUS'
 import EcosystemPage from './aboutUS';
 import './afterCompatibility.css';
 import { useLocation } from 'react-router-dom';
@@ -7,8 +8,6 @@ import { useLocation } from 'react-router-dom';
 const MainPage = () => {
   const location = useLocation();
   const { compatibilityValue } = location.state || {};
-
-  //chamada da api para gerar laudo ( passar nome e email na url.)
 
   const scrollToEcosystem = () => {
     const ecosystemSection = document.getElementById('ecosystem-section');
@@ -18,12 +17,12 @@ const MainPage = () => {
   return (
     <div className="main-page-container">
       <main>
-        {/* Exibe a CompatibilityPage */}
-        <CompatibilityPage compatibilityValue={compatibilityValue} />
-                
-        {/* Seção da EcosystemPage */}
+        <CompatibilityPage compatibilityValue={compatibilityValue} />             
         <div id="ecosystem-section">
           <EcosystemPage />
+        </div>
+        <div id='contact-us'>
+          <ContactUs />
         </div>
       </main>
 

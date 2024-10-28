@@ -1,6 +1,6 @@
 import React from 'react';
 import './errorPage.css';
-import sadFace from '../assets/sadFace.png';
+import errorIMG from '../assets/errorIMG.png';
 import dnaClubLogo from '../assets/Club.BRANCO.png';
 
 const ErrorPage = () => {
@@ -8,7 +8,7 @@ const ErrorPage = () => {
     <div className="error-page-container">
       <div className="error-content">
         <h1>PORTABILIDADE NÃO EFETUADA</h1>
-        <img src={sadFace} alt="Sad Face" className="error-icon" />
+        <img src={errorIMG} alt="Sad Face" className="error-img" />
         <p>
           Em breve, <strong>você receberá um e-mail com detalhes e orientações sobre os próximos passos.</strong>
           <br />

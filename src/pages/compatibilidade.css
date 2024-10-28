@@ -5,18 +5,16 @@
   align-items: center;
   height: 100vh;
   text-align: center;
-
-  width: 100%; /* Define a largura para preencher toda a tela */
-  max-width: none; /* Remove o limite do max-width */
+  width: 100%;
+  max-width: 100%;
   margin: 0;
 }
-
 
 .compatibility-container h1 {
   color: #6a3a97;
   font-size: 3vw; /* Tamanho de fonte responsivo */
   margin-bottom: 1vh; /* Espaçamento entre o título e a imagem */
-  font-family: 'Open Sans';
+  font-family: 'Montserrat', sans-serif;
 }
 
 .image-container {
@@ -33,10 +31,10 @@
 
 .image-container h2 {
   position: absolute;
-  top: 42%; /* Centraliza verticalmente */
-  left: 52%; /* Centraliza horizontalmente */
-  transform: translate(-50%, -50%); /* Ajuste para centralização perfeita */
-  font-size: 3vw; /* Tamanho de fonte responsivo */
+  top: 42%;
+  left: 52%;
+  transform: translate(-50%, -60%);
+  font-size: 3vw;
   color: #492681;
   font-family: 'Montserrat-Regular';
 }
@@ -81,4 +79,73 @@
 
 .text-section-compatibility a:hover {
   text-decoration: underline;
+}
+
+
+@media screen and (max-width: 768px) {
+  .main-container {
+      flex-direction: column; /* Empilha os itens verticalmente */
+      align-items: center;
+  }
+
+  .info-section {
+      margin-right: 0; /* Remove a margem lateral */
+      margin-bottom: 20px; /* Espaço entre a seção de informações e a imagem */
+  }
+
+  .form-image {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+
+  .input-container input,
+  .input-container select {
+      width: 80%;
+      padding: 12px;
+      font-size: 14px;
+  }
+
+  .checkbox-container {
+      margin-top: 15px;
+  }
+
+  .checkbox-container label {
+      font-size: 14px;
+  }
+
+  button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .image-container{
+    max-width: 100%;
+  }
+  .image-container img{
+    width: 300px;
+  }
+  .compatibility-container{
+    margin-top: 20%;
+  }
+  .compatibility-container h1{
+    font-size: 5vh;
+  }
+  .compatibility-container h2{
+    font-size: 2.2vh;
+  }
+  .compatibility-container p {
+    font-size: 2vh;
+  }
+  .ecosystem-container{
+    max-width: 80%;
+    display: contents;
+  }
 }

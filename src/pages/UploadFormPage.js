@@ -6,7 +6,7 @@ import meninaCelular from '../assets/meninaCelular.png';
 import { getPresignedUrl, uploadFileToS3 } from '../services/s3Service';
 import { fetchOrderDetails } from '../services/shopifyService';
 import { sendFormData } from '../services/dynamodbservice';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import InfoSection from '../components/infoSection';
 import './forms.css'
                         
@@ -24,19 +24,24 @@ const UploadFormPage = () => {
       alert('Por favor, selecione um arquivo.');
       return;
     }
-
+  
+    if (data.email !== orderData.email) {
+      alert('O e-mail fornecido não corresponde ao e-mail da compra.');
+      return;
+    }
+  
     setIsLoading(true); // Ativa o estado de carregamento para o botão "Enviar"
-
+  
     try {
-      
       const presignedUrl = await getPresignedUrl(file);
       const s3FileUrl = await uploadFileToS3(presignedUrl, file);
-
+  
       // Prepara os dados do formulário
       const formData = {
         email: data.email,
         nome: data.nome,
         cpf: data.cpf,
+        sexo: data.sexo,
         produtoSelecionado: data.selectedProduct,
         nomeSelecionado: data.nomeSelecionado,
         responsavelPelosDados: data.legalResponsibility,
@@ -92,11 +97,13 @@ const UploadFormPage = () => {
 
   return (
 <div className='main-container'>
-  <div className='info-secion'>
-    <InfoSection/>
-  </div>
-  <div className='img-forms'>
-    <img src={meninaCelular} alt='menina no celular' className='form-image'/>
+  <div className='media-content'>   
+    <div className='info-secion'>
+      <InfoSection/>
+    </div>
+    <div className='img-forms'>
+      <img src={meninaCelular} alt='menina no celular' className='form-image'/>
+    </div>
   </div>
   <div className="container">
     <h1>Upload dos seus dados genéticos</h1>
@@ -130,7 +137,7 @@ const UploadFormPage = () => {
               <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
               <label htmlFor='nome'>Nome</label>
               {errors.nome && <p>Nome é obrigatório.</p>}
-            </div>
+            </div>  
 
             <div className='input-container'>
               <input type='text' {...register('cpf', { required: true })} placeholder=' ' />
@@ -167,7 +174,7 @@ const UploadFormPage = () => {
               </div>
             )}
 
-            <div>
+            <div className='input-select'>
               <label>Empresa dos dados genéticos</label>
               <select {...register('nomeSelecionado', { required: true })}>
                 {nomesLista.map((nome, index) => (
@@ -175,6 +182,14 @@ const UploadFormPage = () => {
                 ))}
               </select>
               {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
+            </div>
+            <div className='input-select'>
+              <label>Sexo</label>
+              <select {...register('sexoSelecionado', { required: true })}>
+                <option value="m">Masculino</option>
+                <option value="f">Feminino</option>
+              </select>
+              {errors.sexoSelecionado && <p>A seleção de sexo é obrigatória.</p>}
             </div>
 
             <div className="checkbox-container">

@@ -7,7 +7,8 @@ export const fetchOrderDetails = async (idCompra) => {
     });
 
     if (!response.ok) {
-      throw new Error('Erro ao buscar o pedido na API');
+      console.log(response)
+      throw new Error('Erro ao buscar o pedido na API', response);
     }
     const orderData = await response.json();
     console.log(orderData)

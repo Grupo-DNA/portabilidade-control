@@ -1,32 +1,48 @@
 /* Estilo da seção de informações */
 .info-section {
-    margin-top: 40%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 35px;
-    word-spacing: 5px;
-    line-height: 1.5;
-    color: #ffffff;
-    max-width: 100%;
-    margin-bottom: 20px;
-    z-index: 2
+  margin-top: 8%;
+  font-size: 37px;
+  font-family: 'Montserrat', sans-serif;
+  word-spacing: 5px;
+  line-height: 1.5;
+  color: #ffffff;
+  margin-bottom: 20px;
+  z-index: 2;
 }
-  
-  /* Estilo do ícone */
+
+.info-section .icon {
+  display: flex;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.info-section .icon img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.info-section p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .info-section {
+      font-size: 15.8px;
+      margin-top: 20%;
+      font-family: 'Montserrat', sans-serif;
+      max-width: 70%;
+  }
+
   .info-section .icon {
-    display: flex;
-    margin-top: 10%;
-    margin-left: 20%;
+      display: none;
   }
-  
-  .info-section .icon img {
-    
-    width: 100px;
-    height: auto;
-    object-fit: contain;
+  .media-conten img{
+    width: 100%;
   }
-  
+
   .info-section p {
-    margin: 0;
-    padding: 10px 0;
+      padding: 8px 0;
   }
-  
+}

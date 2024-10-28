@@ -2,6 +2,7 @@ import React from 'react';
 import iconeEspecialistas from '../assets/iconeEspe.png'
 import iconeProdutos from '../assets/iconeProdutos.png'
 import iconeAtendimento from '../assets/iconeAtendimento.png'
+import ScrollArrow from '../components/setaScroll';
 import './aboutUS.css';
 
 const EcosystemPage = () => {
@@ -52,8 +53,10 @@ const EcosystemPage = () => {
             </p>
           </div>
         </div>
+        <ScrollArrow targetId="contact-us" />
       </div>
     </div>
+    
   );
 };
 

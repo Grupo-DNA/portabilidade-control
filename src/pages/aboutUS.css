@@ -1,7 +1,7 @@
 .ecosystem-container {
   text-align: center;
   padding: 20px;
-  margin-top: 5%;
+  margin-top: 1%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,12 +11,12 @@
 
 .ecosystem-container h1 {
   color: #6a3a97; /* Cor roxa usada no texto */
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 0.5rem;
 }
 
 .ecosystem-container p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #6a3a97;
   margin-bottom: 2rem;
 }
@@ -57,13 +57,13 @@
 }
 
 .ecosystem-item h2 {
-  font-size: 1.6rem; /* Tamanho do título */
+  font-size: 1.7rem; /* Tamanho do título */
   color: #6a3a97;
   margin-bottom: 10px;
 }
 
 .ecosystem-item p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #333;
   margin: 0; /* Remove margem extra para ajustar o espaçamento */
 }
@@ -99,5 +99,10 @@
 
   .ecosystem-container h1 {
     font-size: 2.5rem; /* Reduz o tamanho do título em telas pequenas */
+  }
+}
+@media screen and (max-width: 480px) {
+  .ecosystem-item.reverse{
+    flex-direction: column;
   }
 }

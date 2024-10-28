@@ -1,82 +1,96 @@
+/* Estilos globais para o footer */
 .footer {
-    background-color: transparent;
-    color: white;
-    padding: 10px 0;
+    padding: 20px;
+    color: #fff;
+    background-color: #c84375;
     text-align: center;
-}
-
-.footer-content {
+  }
+  
+  .footer-container {
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap; /* Para se adaptar em telas menores */
-    padding: 0 40px;
-}
-
-.footer-section {
-    flex: 1;
-    margin: 20px;
-    text-align: left;
-}
-
-.footer-section h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #c84375;
-}
-
-.footer-section p,
-.footer-section ul,
-.footer-section li {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
+    align-items: center;
+    max-width: 100%;
+    max-height: max-content;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo {
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Para espaçamento quando for empilhado */
+  }
+  
+  .footer-logo img {
+    width: 50px;
+    margin-bottom: 2px;
+  }
+  
+  .footer-info {
+    text-align: center;
+  }
+  
+  .footer-info p {
     margin: 5px 0;
-}
-
-.footer-section ul li a {
-    color: white;
+  }
+  
+  .footer-social a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 24px;
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: #bb86fc; /* Cor de hover */
-}
-
-.footer-bottom {
-    background-color: #c84375;
-    padding: 10px 0;
-    color: white;
-    font-size: 14px;
-    margin-top: 40px;
-}
-
-.footer-bottom a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-bottom a:hover {
-    color: #bb86fc;
-}
-
-@media screen and (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
+  }
+  
+  .footer-social a:hover {
+    color: #ccc;
+  }
+  
+  /* ===== Media Queries para Responsividade ===== */
+  
+  /* Para telas menores (até 768px) */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
     }
-
-    .footer-section {
-        margin-bottom: 20px;
+    
+    .footer-logo, .footer-info, .footer-social {
+      margin-bottom: 10px;
     }
-}
+  
+    .footer-social a {
+      font-size: 20px; /* Ícones menores em telas menores */
+    }
+  }
+  
+  /* Para telas médias (768px até 1024px) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .footer-container {
+      flex-direction: row;
+    }
+  
+    .footer-info {
+      text-align: left;
+    }
+    
+    .footer-social {
+      text-align: right;
+    }
+  }
+  
+  /* Para telas maiores (a partir de 1024px) */
+  @media (min-width: 1024px) {
+    .footer-container {
+      justify-content: space-between;
+    }
+  
+    .footer-info {
+      text-align: center;
+    }
+  
+    .footer-social {
+      justify-content: flex-end;
+    }
+  }
+  

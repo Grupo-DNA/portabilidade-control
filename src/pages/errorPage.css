@@ -1,39 +1,42 @@
-/* Estilos da página de erro */
+/* Estilos globais da página de erro */
 .error-page-container {
-  background-color: #ada8a8;
-  height: 100vh; /* Garante que a altura ocupe a tela inteira */
+  background-color: white;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
-  flex-direction: column; /* Centraliza o conteúdo verticalmente */
-  width: 100vw; /* Garante que a largura ocupe a tela inteira */
+  flex-direction: column;
+  width: 100%;
 }
 
 .error-content {
   padding: 40px;
   border-radius: 10px;
-  width: 100%; /* O conteúdo ocupa toda a largura */
-  max-width: 1000px; /* Define uma largura máxima opcional */
+  width: 100%;
+}
+
+.error-content h1,
+.error-content p {
+  font-family: 'Open Sans', sans-serif;
+  color: #6a3a97;
 }
 
 .error-content h1 {
-  font-size: 36px;
-  color: #6a3a97;
-  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10vh;
+  margin-bottom: 0;
 }
 
 .error-content p {
-  font-size: 18px;
-  color: #6a3a97;
-  line-height: 1.6;
+  font-size: 3.1vh;
 }
 
-.error-icon {
-  width: 475px; /* Tamanho do ícone */
-  height: 280px;
-  margin-bottom: 20px;
+
+.error-img {
+  height: 500px;
+  width: auto;
 }
 
 .dna-club-logo {
@@ -43,22 +46,65 @@
   width: 100px;
 }
 
-/* Estilos para telas menores */
-@media (max-width: 600px) {
+/* Responsividade - Telas menores (até 420px) */
+@media (max-width: 420px) {
   .error-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .error-content h1 {
-    font-size: 28px;
+    font-size: 2vh;
+    margin-bottom: 1%;
   }
 
   .error-content p {
     font-size: 16px;
   }
 
-  .error-icon {
-    width: 80px;
-    height: 80px;
+  .error-img {
+    width: 50%;
+    height: auto;
+  }
+}
+
+/* Responsividade - Telas médias (até 600px) */
+@media (max-width: 600px) {
+  .error-content h1 {
+    font-size: 3.5vh;
+    margin-left:-5%;
+    margin-bottom: 4%;
+  }
+
+  .error-content p {
+    max-width:70%;
+    margin-left:-7%;
+    line-height: 2.1;
+    font-size: 2.5vh;
+  }
+
+  .error-img {
+    width: 80%;
+    margin-left:-5%;
+    height: auto;
+  }
+  
+}
+
+/* Responsividade - Telas maiores (acima de 600px) */
+@media (min-width: 601px) {
+  .error-content h1 {
+    font-size: 10vh;
+  }
+
+  .error-content p {
+    font-size: 3.1vh;
+  }
+
+  .error-img {
+    height: 500px;
+    width: auto;
   }
 }

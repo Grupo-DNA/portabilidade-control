@@ -12,16 +12,20 @@ import './style.css'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<UploadFormPage />} />
-        <Route path="/loading" element={<LoadingPage />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path='/compatibility' element={<CompatibilityPage/>} />
-        <Route path='/ecosystem' element={<MainPage/>} />
-      </Routes>
-      <Footer/>
-    </Router>
+    <div className="app-container">
+      <Router>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<UploadFormPage />} />
+            <Route path="/loading" element={<LoadingPage />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path='/compatibility' element={<CompatibilityPage/>} />
+            <Route path='/ecosystem' element={<MainPage/>} />
+          </Routes>
+        </div>
+        <Footer/>
+      </Router>
+    </div>
   );
 }
 export default App;
