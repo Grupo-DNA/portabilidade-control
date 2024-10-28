@@ -29,6 +29,11 @@
     align-items: center;
 }
 
+.product-box.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
 .container {
     background-color: #67428a;
     padding: 20px;
@@ -290,6 +295,7 @@ button:disabled {
         font-size: 14px;
     }
 }
+
 
 @media screen and (max-width: 480px) {
     .info-section{

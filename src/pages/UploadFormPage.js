@@ -65,7 +65,7 @@ const UploadFormPage = () => {
     }
   };
 
-  const nomesLista = ['Ancestry', 'Atlas', '23andMe', '24Genetics', 'Complete Genomics'];
+  const nomesLista = ['Ancestry', 'Genera', 'Atlas', '23andMe', '24Genetics', 'Complete Genomics'];
   const idCompra = watch('idCompra');
 
   // Função para validar o ID da compra
@@ -152,26 +152,26 @@ const UploadFormPage = () => {
             </div>
 
             {orderData && (
-              <div className="order-selection">
-                <h3>Selecione o produto que deseja:</h3>
-                <div className="product-container">
-                  {orderData.line_items?.map((item, index) => (
-                    <label key={index} className="product-box">
-                      <input 
-                        type="radio" 
-                        name="selectedProduct" 
-                        value={item.name} 
-                        {...register('selectedProduct', { required: true })}
-                      />
-                      <div className="product-details">
-                        <h4>{item.name}</h4>
-                        <p>Quantidade: {item.quantity}</p>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-                {errors.selectedProduct && <p>Por favor, selecione um produto.</p>}
+            <div className="order-selection">
+              <h3>Selecione o produto que deseja:</h3>
+              <div className="product-container">
+                {orderData.line_items?.map((item, index) => (
+                  <label key={index} className={`product-box ${item.name !== 'Portabilidade: DNA Club Completo' ? 'disabled' : ''}`}>
+                    <input 
+                      type="radio" 
+                      name="selectedProduct" 
+                      value={item.name} 
+                      disabled={item.name !== 'Portabilidade: DNA Club Completo'} 
+                      {...register('selectedProduct', { required: true })}
+                    />
+                    <div className="product-details">
+                      <h4>{item.name}</h4>
+                    </div>
+                  </label>
+                ))}
               </div>
+              {errors.selectedProduct && <p>Por favor, selecione um produto.</p>}
+            </div>
             )}
 
             <div className='input-select'>
