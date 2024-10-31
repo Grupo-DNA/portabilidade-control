@@ -65,10 +65,10 @@ const UploadFormPage = () => {
     }
   };
 
-  const nomesLista = ['Ancestry', 'Genera', 'Atlas', '23andMe', '24Genetics', 'Complete Genomics'];
-  const idCompra = watch('idCompra');
+  const nomesLista = ['Ancestry', 'Genera','Sommos','MeuDNA', '23andMe', '24Genetics', 
+    'Transceptar', 'Complete Genomics'];
 
-  // Função para validar o ID da compra
+  const idCompra = watch('idCompra');
   const validateOrderId = async () => {
     if (!idCompra) {
       setError('idCompra', { type: 'manual', message: 'ID da compra é obrigatório.' });
