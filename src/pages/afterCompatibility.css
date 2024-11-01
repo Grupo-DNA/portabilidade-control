@@ -29,10 +29,15 @@
   }
 }
 
-/* EcosystemPage section */
 #ecosystem-section {
-  margin-top: 10px;
+  margin-top: -10%;
   padding: 20px;
-  width: 100%; /* Garante que a seção também ocupe toda a largura */
+  width: 100%;
 
+}
+
+@media screen and (max-width: 768px){
+  .main-page-container{
+    background-size:cover;
+  }
 }

@@ -99,10 +99,38 @@
 
   .ecosystem-container h1 {
     font-size: 2.5rem; /* Reduz o tamanho do título em telas pequenas */
+    
+  }
+  .ecosystem-container{
+    background-size: contain ;
   }
 }
 @media screen and (max-width: 480px) {
   .ecosystem-item.reverse{
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+  .ecosystem-section{
+    max-width: 100%;
+    width: 100%;
+  }
+  .ecosystem-container{
+    display:grid;
+    align-items: center;
+    background-size: cover ;
+  }
+
+  .ecosystem-container h1{
+    font-size: 1.9rem;
+  }
+  .ecosystem-item-content p{
+    font-size: 1.5rem;
+  }
+
+  .ecosystem-container p{
+    font-size: 1.5rem;
+  }
+
+
 }

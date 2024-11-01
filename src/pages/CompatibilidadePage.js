@@ -15,8 +15,7 @@ const CompatibilityPage = ({ compatibilityValue }) => {
       </div>
       <div className='text-section-compatibility'>
         <p>Seus dados genéticos têm <b>{compatibilityValue}% de compatibilidade</b> com as informações da <b>DNA Club.</b></p>
-        <p>Seu <b>laudo já está disponível</b> e você receberá um <b>e-mail com o acesso</b></p>
-        <p>Se tiver dúvidas ou precisar de assistência, entre em contato conosco clicando <a href="/contato">aqui</a>.</p>
+        <p>Seu <b>laudo já está sendo preparado</b> e você receberá um <b>e-mail com o acesso</b></p>
       </div>
       <ScrollArrow targetId="ecosystem-section" />
     </div>

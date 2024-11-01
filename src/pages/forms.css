@@ -7,6 +7,9 @@
     box-sizing: border-box;
     background-color: #C1B2D0;
 }
+.container form{
+    margin-top: -5%;
+}
 
 .media-content{
     display: flex;
@@ -31,22 +34,33 @@
 
 .product-box.disabled {
     opacity: 0.5;
-    pointer-events: none;
-  }
+    pointer-events: none;}
+
+.download-link{
+    margin-bottom: 2%;
+}
   
 .container {
     background-color: #67428a;
     padding: 20px;
     border-radius: 12px;
-    width: 100%;
+    width: 80%;
     max-width: 800px;
     z-index: 1;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
+
+.container a {
+    opacity: 80%;
+    color: white;
+    font-size: 90%;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
 
 .form-image {
     height: 100vh;
@@ -324,8 +338,10 @@ button:disabled {
 
     .container {
         margin-bottom: 10%;
-        padding: 20px;
+        display: flex;
+        align-items: center;
         max-width: 100%;
+        width: 100%;
     }
 }
 

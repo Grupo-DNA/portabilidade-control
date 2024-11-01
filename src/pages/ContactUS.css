@@ -1,106 +1,137 @@
-/* Estilo geral para o container */
+/* Container principal de contato */
 .contact-container {
-    padding: 40px;
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-  }
-  
-  header h1 {
-    font-family: 'Opens Sans',sans-serif;
-    margin-bottom: 3%;
-    color: #6f2da8; /* Cor roxa do título */
-    font-size: 2.5rem;
-  }
-  
-  header p {
-    font-family: 'Opens Sans',sans-serif;
-    margin-bottom: 5%;
-    color: #6f2da8;
-    font-size: 1.2rem;
-  }
-  
-  /* Seção de conteúdo */
-  .contact-content {
-    display: flex;
-    margin-left: 8%;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .profile-section {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .profile-pic {
-    margin-left: 10%;
-    width: 100%;
-    height: auto;
-  }
-  
-  .text-section {
-    flex: 2;
-    padding-left: 20px;
-    text-align: left;
-  }
-  
-  .text-section h2 {
-    font-family: 'Opens Sans',sans-serif;
-    font-size: 1.8rem;
-    color: #6f2da8;
-    margin-bottom: 15px;
-  }
-  
-  .text-section p {
-    font-family: 'Opens Sans',sans-serif;
-    color: #666;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .button-group {
-    margin-top: 20px;
-    display: flex;
+  padding: 40px;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
 }
-  
-  .btn {
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin: 10px;
-    cursor: pointer;
-    border: none;
+
+/* Estilos do cabeçalho */
+header h1 {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 3%;
+  color: #6f2da8; /* Cor roxa do título */
+  font-size: 2.5rem;
+}
+
+header p {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 5%;
+  color: #6f2da8;
+  font-size: 1.2rem;
+}
+
+/* Estilos da seção de conteúdo */
+.contact-content {
+  display: flex;
+  flex-direction: column; /* Layout em coluna */
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Seção de perfil com a imagem */
+.profile-section {
+  flex: 1;
+  text-align: center;
+  order: -1; /* Garante que a imagem fique antes do texto */
+}
+
+.profile-pic {
+  margin: 0 auto; /* Centraliza a imagem */
+  width: 80%; /* Ajuste opcional para responsividade */
+  height: auto;
+}
+
+/* Seção de texto */
+.text-section {
+  flex: 2;
+  padding-top: 20px; /* Espaço entre a imagem e o texto */
+  padding-left: 20px;
+  text-align: left;
+}
+
+.text-section h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  color: #6f2da8;
+  margin-bottom: 15px;
+}
+
+.text-section p {
+  font-family: 'Open Sans', sans-serif;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Estilos do grupo de botões */
+.button-group {
+  margin-top: 20px;
+  display: flex;
+}
+
+/* Estilos dos botões */
+.btn {
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Botão primário */
+.primary-btn {
+  background-color: #6f2da8;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #5c2391; /* Cor mais escura no hover */
+}
+
+/* Botão secundário */
+.secondary-btn {
+  background-color: #a18ee3;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background-color: #8c76d5;
+}
+
+/* Logo do DNA Club */
+.dna-club-logo {
+  width: 100px;
+  margin-top: 20px;
+}
+
+/* Estilos responsivos para telas menores */
+@media screen and (max-width: 480px) {
+  .contact-container {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    align-items: center;
+    padding: 0px;
   }
-  
-  /* Botão primário */
-  .primary-btn {
-    background-color: #6f2da8;
-    color: white;
+
+  .contact-container h1 {
+    font-size: 1.8rem;
   }
-  
-  .primary-btn:hover {
-    background-color: #5c2391; /* Cor mais escura no hover */
+
+  .contact-container h2 {
+    font-size: 1.4rem;
   }
-  
-  /* Botão secundário */
-  .secondary-btn {
-    background-color: #a18ee3;
-    color: white;
+
+  .text-section{
+    margin-bottom: 15%;
+    width: 80%;
   }
-  
-  .secondary-btn:hover {
-    background-color: #8c76d5;
+
+  .contact-content {
+    max-width: 100%;
+    margin-left: 0%;
   }
-  
-  /* Rodapé */
-  footer {
-    margin-top: 30px;
-  }
-  
-  .dna-club-logo {
-    width: 100px;
-    margin-top: 20px;
-  }
-  
+}

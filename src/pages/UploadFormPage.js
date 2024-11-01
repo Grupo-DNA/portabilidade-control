@@ -207,7 +207,11 @@ const UploadFormPage = () => {
             </div>
 
             <FileUploader onDrop={handleFileDrop} />
-
+            <div className="download-link">
+              <a href="" download="ID_purchase_guide.pdf">
+                Onde achar os meus dados genéticos?
+              </a>
+            </div>                  
             <button type="submit" disabled={isLoading}>
               {isLoading ? 'Enviando...' : 'Enviar'}
             </button>

@@ -126,6 +126,7 @@
 }
 
 @media screen and (max-width: 480px) {
+
   .image-container{
     max-width: 100%;
   }
@@ -136,6 +137,7 @@
     margin-top: 20%;
   }
   .compatibility-container h1{
+    margin-top:-25%;
     font-size: 5vh;
   }
   .compatibility-container h2{
