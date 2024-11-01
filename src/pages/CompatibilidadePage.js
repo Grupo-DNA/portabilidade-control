@@ -5,6 +5,7 @@ import ScrollArrow from '../components/setaScroll';
 
 const CompatibilityPage = ({ compatibilityValue }) => {
   const roundedCompatibilityValue = Math.round(compatibilityValue);
+  const compatibilityValue = compatibilityValue.toFixed(2);
 
   return (
     <div className="compatibility-container">
