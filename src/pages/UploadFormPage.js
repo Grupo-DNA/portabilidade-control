@@ -66,7 +66,7 @@ const UploadFormPage = () => {
   };
 
   const nomesLista = ['Ancestry', 'Genera','Sommos','MeuDNA', '23andMe', '24Genetics', 
-    'Transceptar', 'Complete Genomics'];
+    'Transceptar', 'Complete Genomics', 'Outros'];
 
   const idCompra = watch('idCompra');
   const validateOrderId = async () => {
