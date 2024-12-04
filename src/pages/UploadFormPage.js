@@ -80,6 +80,7 @@ const UploadFormPage = () => {
     try {
       const orderData = await fetchOrderDetails(idCompra);
       //A mudança sera aqui
+      console.log(lengthorderData.line_items);
       if (orderData) {
         setIsValidOrder(true);
         setOrderData(orderData);
