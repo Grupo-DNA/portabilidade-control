@@ -5,6 +5,7 @@ import MainPage from './pages/compatibilityfinalPage';
 import ErrorPage from './pages/ErrorPage';
 import CompatibilityPage from './pages/CompatibilidadePage';
 import Footer from './pages/footer';
+import GerenciarPortabilidade from './pages/gerenciarPortabilidade';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import './style.css'
@@ -21,6 +22,7 @@ function App() {
             <Route path="/error" element={<ErrorPage />} />
             <Route path='/compatibility' element={<CompatibilityPage/>} />
             <Route path='/ecosystem' element={<MainPage/>} />
+            <Route path='/gerenciarPortabilidade' element={<GerenciarPortabilidade />} />
           </Routes>
         </div>
         <Footer/>

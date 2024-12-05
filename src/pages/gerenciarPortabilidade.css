@@ -1,0 +1,36 @@
+/* Estilo para a lista de pedidos */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Estilo de cada item de portabilidade */
+  .order-item {
+    background-color: #eca6ec;  /* Cor de fundo suave */
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 12px;  /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombramento suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Efeito de hover */
+  }
+  
+  /* Efeito de hover para o item */
+  .order-item:hover {
+    transform: translateY(-5px);  /* Eleva o item um pouco ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);  /* Sombramento mais intenso */
+  }
+  
+  /* Títulos e textos dentro do item */
+  .order-item h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .order-item p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  

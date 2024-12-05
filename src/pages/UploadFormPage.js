@@ -79,15 +79,41 @@ const UploadFormPage = () => {
 
     try {
       const orderData = await fetchOrderDetails(idCompra);
-      //A mudança sera aqui
-      console.log(lengthorderData.line_items);
-      if (orderData) {
+      
+      
+      console.log(orderData.line_items.length)
+
+      
+      let existe_port = false; // Use 'let' para que a variável possa ser alterada
+      let qtd_port = 0;
+
+      for (let i = 0; i < orderData.line_items.length; i++) {
+        console.log('ok');
+        console.log(orderData.line_items[i].name); // Certifique-se de que 'name' realmente existe
+        
+        if (orderData.line_items[i].name.includes("Portabilidade")) {
+          console.log('achei');
+          existe_port = true; // Agora pode alterar o valor de 'existe_port'
+          qtd_port = orderData.line_items[i].quantity;
+        }
+      }
+      
+
+      //Agora basta saber quantos pedidos são
+      if (existe_port) {
+        
+        if (qtd_port > 1){
+          setError('idCompra', { type: 'manual', message: 'Meu parcero, tu compro mais de uma portabilidade, fala com nossa central =D .' });
+          navigate('/gerenciarPortabilidade', {state: { orderData}});
+          return;
+        }
+
         setIsValidOrder(true);
         setOrderData(orderData);
         clearErrors('idCompra'); // Limpa qualquer erro se o pedido for válido
       } else {
         setIsValidOrder(false);
-        setError('idCompra', { type: 'manual', message: 'Pedido não encontrado.' });
+        setError('idCompra', { type: 'manual', message: 'Pedido não encontrado para portabilidade.' });
       }
     } catch (error) {
       setIsValidOrder(false);
