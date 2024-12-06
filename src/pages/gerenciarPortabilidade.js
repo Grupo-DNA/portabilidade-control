@@ -10,7 +10,8 @@ const GerenciarPortabilidade = ({ state }) => {
   const orderData = location.state?.orderData || []; // Recebe os dados da encomenda do estado de navegação
 
   const handleContactSupport = () => {
-    navigate('/support'); // Redireciona para a página de suporte
+    const quantidadeDocumentos = orderData.line_items?.[0]?.quantity || 0;
+    navigate('/avancoPortabilidade', {state: { orderData, quantidadeDocumentos}}); // Redireciona para a página de suporte
   };
 
 

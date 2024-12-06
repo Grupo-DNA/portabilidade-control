@@ -12,7 +12,7 @@ export const sendFormData = async (formData) => {
       return result;
     } catch (error) {
       console.error('Erro ao enviar os dados:', error);
-      throw error;
+      throw error;  
     }
   };
   
