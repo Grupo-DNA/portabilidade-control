@@ -1,18 +1,25 @@
+.container{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); 
+}
+
 /* Estilo para a lista de pedidos */
 .order-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    
   }
   
   /* Estilo de cada item de portabilidade */
   .order-item {
-    background-color: #eca6ec;  /* Cor de fundo suave */
+    background-color: #f2d2f7;  /* Cor de fundo suave */
     padding: 20px;
     margin: 10px 0;
     border-radius: 12px;  /* Bordas arredondadas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombramento suave */
     transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Efeito de hover */
+    border: 3px solid #550779;
+
   }
   
   /* Efeito de hover para o item */
@@ -25,12 +32,61 @@
   .order-item h3 {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: #830783;
   }
   
   .order-item p {
     font-size: 1rem;
     color: #555;
     margin: 5px 0;
+    color: #830783;
+  }
+
+  .Opcoes {
+    border: 2px solid #ccc; /* Adiciona uma borda */
+    padding: 30px; /* Espaçamento interno */
+    max-width: 400px; /* Define a largura máxima */
+    margin: 5rem auto; /* Centraliza o div na tela */
+    text-align: center; /* Centraliza o texto no parágrafo */
+    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
+    background-color: #260d3536; /* Cor de fundo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar o div */
   }
   
+  .text-center {
+    color: #ffff;
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    margin-bottom: 20px; /* Espaçamento inferior */
+  }
+
+  .submit-button p {
+    color: #ffff;
+  }
+  
+  .titulo{
+    font-size: 2rem;
+    color: #ffff
+  }
+  
+  .subtitle{
+    color: #ffff;
+  }
+
+  .possibilities-text{
+    color: #ffff;
+    
+  }
+
+  .possibilities-text h1{
+    text-align: left;
+  }
+
+  .submit-button{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); ;
+  }
+
+  .highlight{
+    font-weight: bold;
+    font-size: 19px;
+  }

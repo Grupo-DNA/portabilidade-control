@@ -103,7 +103,7 @@ const UploadFormPage = () => {
       if (existe_port) {
         
         if (qtd_port > 1){
-          setError('idCompra', { type: 'manual', message: 'Meu parcero, tu compro mais de uma portabilidade, fala com nossa central =D .' });
+          setError('idCompra', { type: 'manual', message: 'Identificado mais de uma portabilidade, fale com a nossa central.' });
           navigate('/gerenciarPortabilidade', {state: { orderData}});
           return;
         }
@@ -143,6 +143,7 @@ const UploadFormPage = () => {
           {...register('idCompra', { required: true })} 
           placeholder=' ' 
           style={{
+             
             borderColor: errors.idCompra ? 'red' : isValidOrder ? 'green' : 'black'
           }}
         />
@@ -152,7 +153,7 @@ const UploadFormPage = () => {
 
       {/* Botão para validar o ID da compra */}
       {!isValidOrder && (
-        <button type="button" onClick={validateOrderId} disabled={isValidating}>
+        <button className="botaoValida" type="button" onClick={validateOrderId} disabled={isValidating}>
           {isValidating ? 'Validando...' : 'Validar ID da compra'}
         </button>
       )}

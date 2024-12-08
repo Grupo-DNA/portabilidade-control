@@ -77,11 +77,17 @@ h1 {
     margin-bottom: 10%;
 }
 
+.botaoValida{
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar o div */
+}
+
 /* Campo de input */
 .input-container {
+    margin-top: 30px;
     position: relative;
-    margin-bottom: 20px;
 }
+
 
 .input-container input,
 .input-container select {

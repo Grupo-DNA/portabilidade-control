@@ -40,33 +40,36 @@ const GerenciarPortabilidade = ({ state }) => {
       </div>
 
       <div className="container">
-        <h1>Gerenciar Portabilidades</h1>
-        <p> Olá {orderData.customer.first_name} {orderData.customer.last_name} </p>
+        <h1>Multi Portabilidades</h1>
+        <div className="titulo">
+        <p> Olá {orderData.customer.first_name} {orderData.customer.last_name}, </p>
+        </div>
+        <div className="subtitle">
         <p>
-  Detectamos mais de uma portabilidade no seu pedido:
-</p>
+          Detectamos mais de uma portabilidade no seu pedido:
+        </p></div>
+
+        
         <div className="order-list">
         {orderData.line_items?.filter(item => item.name.toLowerCase().includes('portabilidade')).map((item, index) => (
             <div key={index} className="order-item">
             <h3>{item.name}</h3>
-            <p>Quantidade: {item.quantity}</p>
+            <p>Quantidade: <span className="highlight">{item.quantity}</span></p>
             <p>E-mail: {orderData.customer.email}</p>
             </div>
         ))}
         </div>
 
+        <div className="Opcoes">
+          <p className="text-center">Escolha como deseja proceder:</p>
+          <button onClick={handleContactSupport} className="submit-button">
+            <p>Tenho <span className="highlight">todos</span> os dados necessários e quero iniciar o envio </p>  
+          </button>
+          <button onClick={handleClick} className="submit-button">
+            <p>Preciso de ajuda do suporte</p>
+          </button>
+        </div>
 
-        <p>Você precisará enviar os {orderData.line_items[0].quantity} dados brutos separadamente, com a devida especificação de cada pessoa. </p>
-        <p>Caso tenha alguma dúvida, fale com o suporte</p>
-        <p>Escolha como deseja proceder:</p>
-
-        <button onClick={handleContactSupport} className="submit-button">
-          Entendi, vou começar o envio!
-        </button>
-
-        <button onClick={handleClick} className="submit-button">
-          Quero falar com alguém do suporte!
-        </button>
       </div>
     </div>
   );
