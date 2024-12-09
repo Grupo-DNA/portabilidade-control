@@ -1,0 +1,27 @@
+.texto_concluido {
+    padding: 30px;
+    background: #4d024d41;
+    box-shadow: 1px 4px 30px rgba(0, 0, 0, 0.2); 
+    border-radius: 30px;
+}
+
+.texto_concluido h1 {
+    font-size: clamp(2rem, 5vw, 6rem); /* Ajusta entre 2rem e 6rem baseado na largura */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.texto_concluido h2 {
+    font-size: clamp(1.5rem, 4vw, 4rem);
+    color:white;
+    font-weight: normal;
+    text-align: center;
+    margin-top: -1.5rem;
+}
+
+.texto_concluido p {
+    font-size: clamp(1rem, 2vw, 2rem);
+    color:white;
+    
+}

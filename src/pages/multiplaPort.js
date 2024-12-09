@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import InfoSection from '../components/infoSection';
 import meninaCelular from '../assets/meninaCelular.png';
-import './avancoPortabilidade.css';
+import './multiplaPort.css';
 
 
 
@@ -23,7 +23,12 @@ const MultiplaPort = () => {
 
       <div className="container">
         <div className="upload-container">
-          <h1>Parabéns, basta esperar que te retornaremos com todos os seus laudos</h1>
+          <div className="texto_concluido">
+            <h1>OBRIGADO</h1>
+            <h2>por adquirir a multiportabilidade!</h2> 
+            <p> Seus dados estão sendo processados e você será notificado assim que estiverem disponíveis.</p>
+          </div>
+          
 
         </div>
       </div>

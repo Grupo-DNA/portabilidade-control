@@ -66,94 +66,102 @@ const AvancoPortabilidade = () => {
     setDocumentos(newDocumentos);
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   // Função de envio dos dados
   const handleSubmit = async () => {
-    // Itera sobre cada documento
-    for (let documento of documentos) {
-      let isValid = true;
-      const erros = {};
-  
-      // Validações dos campos obrigatórios
-      if (!documento.nome) {
-        erros.nome = 'O nome é obrigatório';
-        isValid = false;
-      }
-      if (!documento.cpf) {
-        erros.cpf = 'O CPF é obrigatório';
-        isValid = false;
-      }
-      if (!documento.email) {
-        erros.email = 'O e-mail é obrigatório';
-        isValid = false;
-      }
-      if (!documento.tipoDado) {
-        erros.tipoDado = 'O tipo de dado é obrigatório';
-        isValid = false;
-      }
-      if (!documento.sexo) {
-        erros.sexo = 'O sexo é obrigatório';
-        isValid = false;
-      }
-      if (!documento.file) {
-        erros.file = 'O arquivo é obrigatório';
-        isValid = false;
-      }
-  
-      // Atribuir os erros ao documento atual
-      documento.erros = erros;
-  
-      if (!isValid) {
-        // Exibir os erros encontrados
-        const mensagensErro = Object.values(erros).join('\n');
-        alert(`Por favor, preencha todos os campos obrigatórios:\n${mensagensErro}`);
-        return; // Interrompe o loop e o envio
-      }
+    setIsSubmitting(true); // Desativa o botão e exibe a mensagem
+    try {
+      // Itera sobre cada documento
+      for (let documento of documentos) {
+        let isValid = true;
+        const erros = {};
 
+        // Validações dos campos obrigatórios
+        if (!documento.nome) {
+          erros.nome = "O nome é obrigatório";
+          isValid = false;
+        }
+        if (!documento.cpf) {
+          erros.cpf = "O CPF é obrigatório";
+          isValid = false;
+        }
+        if (!documento.email) {
+          erros.email = "O e-mail é obrigatório";
+          isValid = false;
+        }
+        if (!documento.tipoDado) {
+          erros.tipoDado = "O tipo de dado é obrigatório";
+          isValid = false;
+        }
+        if (!documento.sexo) {
+          erros.sexo = "O sexo é obrigatório";
+          isValid = false;
+        }
+        if (!documento.file) {
+          erros.file = "O arquivo é obrigatório";
+          isValid = false;
+        }
 
-      if (documento.file) {
-        try {
-          const fileExtension = documento.file.name.split('.').pop().toLowerCase();
-          let newFileName = documento.nome;
-  
-          if (fileExtension === 'csv') {
-            newFileName = `ID_${orderData.order_number}_${documento.nome}.csv`;
-          } else if (fileExtension === 'txt') {
-            newFileName = `ID_${orderData.order_number}_${documento.nome}.txt`;
+        // Atribuir os erros ao documento atual
+        documento.erros = erros;
+
+        if (!isValid) {
+          // Exibir os erros encontrados
+          const mensagensErro = Object.values(erros).join("\n");
+          alert(`Por favor, preencha todos os campos obrigatórios:\n${mensagensErro}`);
+          setIsSubmitting(false); // Reativa o botão
+          return; // Interrompe o loop e o envio
+        }
+
+        if (documento.file) {
+          try {
+            const fileExtension = documento.file.name.split(".").pop().toLowerCase();
+            let newFileName = documento.nome;
+
+            if (fileExtension === "csv") {
+              newFileName = `ID_${orderData.order_number}_${documento.nome}.csv`;
+            } else if (fileExtension === "txt") {
+              newFileName = `ID_${orderData.order_number}_${documento.nome}.txt`;
+            }
+
+            const renamedFile = new File([documento.file], newFileName, { type: documento.file.type });
+
+            const presignedUrl = await getPresignedUrl(renamedFile);
+            const s3FileUrl = await uploadFileToS3(presignedUrl, renamedFile);
+
+            const formData = {
+              email: documento.email,
+              nome: documento.nome,
+              cpf: documento.cpf,
+              sexo: documento.sexo,
+              produtoSelecionado: "Portabilidade - DNA COMPLETO",
+              nomeSelecionado: documento.tipoDado,
+              responsavelPelosDados: true,
+              liOsTermosDeUso: true,
+              s3FileUrl,
+            };
+            await sendFormData(formData, orderData);
+
+            // Mudar o nome do documento
+            documento.new_file = newFileName;
+            console.log("Upload concluído com sucesso!", s3FileUrl);
+
+            // Adicionar um pequeno atraso entre os envios
+            await new Promise((resolve) => setTimeout(resolve, 1000)); // 1 segundo
+          } catch (error) {
+            console.error("Erro ao fazer upload do arquivo:", error);
           }
-  
-          const renamedFile = new File([documento.file], newFileName, { type: documento.file.type });
-  
-          const presignedUrl = await getPresignedUrl(renamedFile);
-          const s3FileUrl = await uploadFileToS3(presignedUrl, renamedFile);
-  
-          const formData = {
-            email: documento.email,
-            nome: documento.nome,
-            cpf: documento.cpf,
-            sexo: documento.sexo,
-            produtoSelecionado: "Portabilidade - DNA COMPLETO",
-            nomeSelecionado: documento.tipoDado,
-            responsavelPelosDados: true,
-            liOsTermosDeUso: true,
-            s3FileUrl,
-          };
-          await sendFormData(formData, orderData);
-
-          // Mudar o noem do documento
-          documento.new_file = newFileName;
-          console.log('Upload concluído com sucesso!', s3FileUrl);
-          
-          // Adicionar um pequeno atraso entre os envios
-          await new Promise(resolve => setTimeout(resolve, 1000)); // 1 segundo
-        } catch (error) {
-          console.error('Erro ao fazer upload do arquivo:', error);
         }
       }
+      await sendEmailData(documentos, orderData.customer.first_name);
+      console.log("Email enviado");
+      navigate("/multiplaPort");
+      console.log("Documentos e Nomes:", documentos);
+    } catch (error) {
+      console.error("Erro durante o envio:", error);
+    } finally {
+      setIsSubmitting(false); // Reativa o botão após a conclusão
     }
-    await sendEmailData(documentos, orderData.customer.first_name);
-    console.log("Email enviado");
-    navigate('/multiplaPort');
-    console.log('Documentos e Nomes:', documentos);
   };
     
 
@@ -233,8 +241,8 @@ const AvancoPortabilidade = () => {
             </div>
           ))}
 
-          <button onClick={handleSubmit} className="submit-button">
-            Enviar Documentos
+          <button onClick={handleSubmit} className="submit-button" disabled={isSubmitting}>
+          {isSubmitting ? "Enviando documentos..." : "Enviar Documentos"}
           </button>
         </div>
       </div>

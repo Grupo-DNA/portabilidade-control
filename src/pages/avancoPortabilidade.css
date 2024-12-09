@@ -91,6 +91,13 @@
   button.submit-button:hover {
     background-color: #8b45a0;
   }
+
+  button.submit-button:disabled {
+    background-color: #d3d3d3; /* Cinza claro para indicar que está desativado */
+    color: #a9a9a9; /* Texto também em cinza claro */
+    cursor: not-allowed; /* Indica visualmente que está desativado */
+    pointer-events: none; /* Remove todas as interações de hover */
+  }
   
   input[type="text"]:focus, button:focus {
     outline: none;
