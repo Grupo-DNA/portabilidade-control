@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'; // Para redirecionar
 import FileUploader from '../components/FileUploader';
-import meninaCelular from '../assets/meninaCelular.png';
+import meninaCelular from '../assets/novo.svg';
 import { getPresignedUrl, uploadFileToS3 } from '../services/s3Service';
 import { fetchOrderDetails } from '../services/shopifyService';
 import { sendFormData } from '../services/dynamodbservice';
@@ -97,10 +97,7 @@ const UploadFormPage = () => {
 
   return (
 <div className='main-container'>
-  <div className='media-content'>   
-    <div className='info-secion'>
-      <InfoSection/>
-    </div>
+  <div className='media-content'>  
     <div className='img-forms'>
       <img src={meninaCelular} alt='menina no celular' className='form-image'/>
     </div>

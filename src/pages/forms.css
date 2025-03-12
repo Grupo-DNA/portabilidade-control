@@ -3,9 +3,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: #C1B2D0;
+    background: linear-gradient(to right, #492681, #e065ad); /* Gradiente da esquerda para a direita */
 }
 .container form{
     margin-top: -5%;
@@ -15,7 +13,6 @@
     display: flex;
     width: 100%;
     max-width: 100%;
-    padding: 10px;
 }
 
 .expanded-form {
@@ -65,10 +62,7 @@
 .form-image {
     height: 100vh;
     width: auto;
-    margin-right: -250px;
     object-fit: contain;
-    transform: scaleX(-1);
-    margin-top: -20px;
 }
 
 h1 {
@@ -271,16 +265,6 @@ button:disabled {
     .main-container {
         flex-direction: column; /* Empilha os itens verticalmente */
         align-items: center;
-    }
-
-    .info-section {
-        margin-right: 0; /* Remove a margem lateral */
-        margin-bottom: 20px; /* Espaço entre a seção de informações e a imagem */
-    }
-
-    .form-image {
-        width: 100%;
-        margin-bottom: 20px;
     }
 
     h1 {
