@@ -1,5 +1,4 @@
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -8,5 +7,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%; /* Garantir que o body ocupe 100% da altura */
+}
+body, h1, h2, h3, p, input, select, button {
+  font-family: 'Montserrat', sans-serif;
 }
 

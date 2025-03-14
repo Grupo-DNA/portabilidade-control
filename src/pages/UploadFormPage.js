@@ -6,8 +6,9 @@ import meninaCelular from '../assets/novo.svg';
 import { getPresignedUrl, uploadFileToS3 } from '../services/s3Service';
 import { fetchOrderDetails } from '../services/shopifyService';
 import { sendFormData } from '../services/dynamodbservice';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { useState } from 'react';
-import InfoSection from '../components/infoSection';
+import './footer.css'
 import './forms.css'
                         
 const UploadFormPage = () => {
@@ -97,24 +98,29 @@ const UploadFormPage = () => {
 
   return (
 <div className='main-container'>
+  {/* imagem com as infos */}
   <div className='media-content'>  
     <div className='img-forms'>
       <img src={meninaCelular} alt='menina no celular' className='form-image'/>
     </div>
   </div>
+  {/* parte do formulário */}
   <div className="container">
-    <h1>Upload dos seus dados genéticos</h1>
+    <h1>UPLOAD DO SEUS DADOS GENÉTICOS</h1>
     <form onSubmit={handleSubmit(handleSubmitForm)}>
-      <div className='input-container'>
-        <input
-          type='text' 
-          id='idCompra' 
-          {...register('idCompra', { required: true })} 
-          placeholder=' ' 
-          style={{
-            borderColor: errors.idCompra ? 'red' : isValidOrder ? 'green' : 'black'
-          }}
-        />
+      <div className='input-container input-ID' >
+      <input
+      type="text"
+      id="idCompra"
+      {...register("idCompra", { required: true })}
+      placeholder=" "
+      disabled={isValidOrder} 
+      style={{
+        borderColor: errors.idCompra ? "red" : isValidOrder ? "green" : "white",
+        backgroundColor: isValidOrder ? "#f0f0f0" : "white", 
+        cursor: isValidOrder ? "not-allowed" : "text" 
+      }}
+    />
         <label htmlFor='idCompra'>ID da compra</label>
         {errors.idCompra && <p>{errors.idCompra.message || 'ID da compra é obrigatório.'}</p>}
       </div>
@@ -128,94 +134,120 @@ const UploadFormPage = () => {
 
       {/* Animação suave para expandir o formulário quando o ID é válido */}
       <div className={`expanded-form ${isValidOrder ? 'open' : ''}`}>
-        {isValidOrder && (
-          <>
-            <div className='input-container'>
-              <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
-              <label htmlFor='nome'>Nome</label>
-              {errors.nome && <p>Nome é obrigatório.</p>}
-            </div>  
+  {isValidOrder && (
+    <>
+      {/* Seção de dados pessoais */}
+      <div className="section">
+        <h3>Dados Pessoais</h3>
+        <div className='input-container'>
+          <input type='text' id='nome' {...register('nome', { required: true })} placeholder=' ' />
+          <label htmlFor='nome'>Nome</label>
+          {errors.nome && <p className="error-message">NOME É OBRIGATÓRIO.</p>}
+        </div>  
 
-            <div className='input-container'>
-              <input type='text' {...register('cpf', { required: true })} placeholder=' ' />
-              <label htmlFor='cpf'>CPF</label>
-              {errors.cpf && <p>CPF é obrigatório.</p>}
-            </div>
+        <div className='input-container'>
+          <input type='text' {...register('cpf', { required: true })} placeholder=' ' />
+          <label htmlFor='cpf'>CPF</label>
+          {errors.cpf && <p className="error-message">CPF É OBRIGATÓRIO.</p>}
+        </div>
 
-            <div className='input-container'>
-              <input type='text' {...register('email', { required: true })} placeholder=' ' />
-              <label htmlFor='email'>Email</label>
-              {errors.email && <p>Email inválido.</p>}
-            </div>
-
-            {orderData && (
-            <div className="order-selection">
-              <h3>Selecione o produto que deseja:</h3>
-              <div className="product-container">
-                {orderData.line_items?.map((item, index) => (
-                  <label key={index} className={`product-box ${item.name !== 'Portabilidade: DNA Club Completo' ? 'disabled' : ''}`}>
-                    <input 
-                      type="radio" 
-                      name="selectedProduct" 
-                      value={item.name} 
-                      disabled={item.name !== 'Portabilidade: DNA Club Completo'} 
-                      {...register('selectedProduct', { required: true })}
-                    />
-                    <div className="product-details">
-                      <h4>{item.name}</h4>
-                    </div>
-                  </label>
-                ))}
-              </div>
-              {errors.selectedProduct && <p>Por favor, selecione um produto.</p>}
-            </div>
-            )}
-
-            <div className='input-select'>
-              <label>Empresa dos dados genéticos</label>
-              <select {...register('nomeSelecionado', { required: true })}>
-                {nomesLista.map((nome, index) => (
-                  <option key={index} value={nome}>{nome}</option>
-                ))}
-              </select>
-              {errors.nomeSelecionado && <p>Seleção de nome é obrigatória.</p>}
-            </div>
-            <div className='input-select'>
-              <label>Sexo</label>
-              <select {...register('sexoSelecionado', { required: true })}>
-                <option value="m">Masculino</option>
-                <option value="f">Feminino</option>
-              </select>
-              {errors.sexoSelecionado && <p>A seleção de sexo é obrigatória.</p>}
-            </div>
-
-            <div className="checkbox-container">
-              <div>
-                <input type="checkbox" id="legalResponsibility" {...register('legalResponsibility', { required: true })} />
-                <label htmlFor="legalResponsibility">Sou o responsável legal por estes dados.</label>
-                {errors.legalResponsibility && <p>É necessário confirmar a responsabilidade legal.</p>}
-              </div>
-
-              <div>
-                <input type="checkbox" id="termsAccepted" {...register('termsAccepted', { required: true })} />
-                <label htmlFor="termsAccepted">Declaro que li e aceito integralmente as condições de uso.</label>
-                {errors.termsAccepted && <p>É necessário aceitar as condições de uso.</p>}
-              </div>
-            </div>
-
-            <FileUploader onDrop={handleFileDrop} />
-            <div className="download-link">
-              <a href="" download="ID_purchase_guide.pdf">
-                Onde achar os meus dados genéticos?
-              </a>
-            </div>                  
-            <button type="submit" disabled={isLoading}>
-              {isLoading ? 'Enviando...' : 'Enviar'}
-            </button>
-          </>
-        )}
+        <div className='input-container'>
+          <input type='text' {...register('email', { required: true })} placeholder=' ' />
+          <label htmlFor='email'>Email</label>
+          {errors.email && <p className="error-message">EMAIL É OBRIGATÓRIO.</p>}
+        </div>
       </div>
+
+      {/* Seção de seleção de produto */}
+      {orderData && (
+        <div className="section order-selection">
+          <h3>Selecione o Produto</h3>
+          <div className="product-container">
+            {orderData.line_items?.map((item, index) => (
+              <label key={index} className={`product-box ${item.name !== 'Portabilidade: DNA Club Completo' ? 'disabled' : ''}`}>
+                <input 
+                  type="radio" 
+                  name="selectedProduct" 
+                  value={item.name} 
+                  disabled={item.name !== 'Portabilidade: DNA Club Completo'} 
+                  {...register('selectedProduct', { required: true })}
+                />
+                <div className="product-details">
+                  <h4>{item.name}</h4>
+                </div>
+              </label>
+            ))}
+          </div>
+          {errors.selectedProduct && <p className="error-message">Por favor, selecione um produto.</p>}
+        </div>
+      )}
+
+      {/* Seção de seleções adicionais */}
+      <div className="section">
+        <div className='input-select'>
+          <label>Empresa dos Dados Genéticos</label>
+          <select {...register('nomeSelecionado', { required: true })}>
+            {nomesLista.map((nome, index) => (
+              <option key={index} value={nome}>{nome}</option>
+            ))}
+          </select>
+          {errors.nomeSelecionado && <p className="error-message">Seleção de nome é obrigatória.</p>}
+        </div>
+        
+        <div className='input-select'>
+          <label>Sexo</label>
+          <select {...register('sexoSelecionado', { required: true })}>
+            <option value="m">Masculino</option>
+            <option value="f">Feminino</option>
+          </select>
+          {errors.sexoSelecionado && <p className="error-message">A seleção de sexo é obrigatória.</p>}
+        </div>
+
+        {/* Seção de termos e responsabilidade */}
+        <div className="checkbox-container">
+          <div>
+            <input type="checkbox" id="legalResponsibility" {...register('legalResponsibility', { required: true })} />
+            <label htmlFor="legalResponsibility">Sou o responsável legal por estes dados.</label>
+            {errors.legalResponsibility && <p className="error-message">É necessário confirmar a responsabilidade legal.</p>}
+          </div>
+
+          <div>
+            <input type="checkbox" id="termsAccepted" {...register('termsAccepted', { required: true })} />
+            <label htmlFor="termsAccepted">Declaro que li e aceito integralmente as condições de uso.</label>
+            {errors.termsAccepted && <p className="error-message">É necessário aceitar as condições de uso.</p>}
+          </div>
+        </div>
+        
+        {/* Upload de arquivo e link informativo */}
+        <FileUploader onDrop={handleFileDrop} />
+
+        <div className="download-link">
+          <a href="" download="ID_purchase_guide.pdf">
+            Onde achar os meus dados genéticos?
+          </a>
+        </div> 
+      </div>
+
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Enviando...' : 'Enviar'}
+      </button>
+    </>
+  )}
+</div>
+
     </form>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-info">
+          <p>(16) 98195-4580 | (16) 3415-6869</p>
+        </div>
+        <div className="footer-social">
+          <a href="https://www.instagram.com/clubdodna_/" target="_blank" rel="noopener noreferrer">
+            <FaInstagram size={25}/>
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
 </div>
 
