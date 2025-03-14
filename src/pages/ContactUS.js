@@ -1,6 +1,6 @@
 import './ContactUS.css';
 import logoRoxo from '../assets/LogoclubRoxo.png';
-import nutricionistaFoto from '../assets/tamiFoto.png'
+import nutricionistaFoto from '../assets/RafaFoto.jpg'
 const ContactUS =  () =>
     {
     return (
@@ -15,7 +15,7 @@ const ContactUS =  () =>
             <div className="profile-section">
               <img
                 src={nutricionistaFoto}
-                alt="Tamires Oliveira"
+                alt="Rafaela Amaral"
                 className="profile-pic"
               />
             </div>
