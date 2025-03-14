@@ -20,7 +20,7 @@ const ContactUS =  () =>
               />
             </div>
             <div className="text-section">
-              <h2>Tamires Oliveira | Nutricionista Parceira</h2>
+              <h2>Rafaela Amaral | Nutricionista Parceira</h2>
               <p>
                 Estou pronta para te ajudar a <strong>interpretar os resultados do seu laudo de mapeamento genético</strong>. Vou te guiar em cada detalhe, explicando como as informações genéticas podem influenciar sua saúde e bem-estar, conte comigo para <strong>transformar esses dados em ações concretas para o seu futuro!</strong>
               </p>
