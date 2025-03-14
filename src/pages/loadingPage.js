@@ -13,7 +13,7 @@ const LoadingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://9smyqqiekf.execute-api.us-east-1.amazonaws.com/dev/dynamoDB?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`https://n8n.dnasoftware.duckdns.org/webhook/calculo_portabilidade?email=${encodeURIComponent(email)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -23,8 +23,8 @@ const LoadingPage = () => {
         if (response.ok) {
           const result = await response.json();
           console.log('Resultado da API:', result);
-          console.log('compatbilidade', result.data)
-          navigate('/ecosystem', { state: { compatibilityValue: result.data } });
+          console.log('compatbilidade', result.compatibilidade)
+          navigate('/ecosystem', { state: { compatibilityValue: result.compatibilidade } });
         } else {
           console.error('Erro ao fazer a requisição à API:', response.statusText);
           navigate('/error');
@@ -35,9 +35,9 @@ const LoadingPage = () => {
       } finally {
         setLoading(false); // Desativa o estado de carregamento quando a requisição for concluída
       }
-    };
+    };  
 
-    setTimeout(fetchData, 17000);
+    setTimeout(fetchData, 30000);
   }, [email, navigate]);
 
   return (

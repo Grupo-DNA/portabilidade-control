@@ -37,6 +37,17 @@ header p {
   order: -1; /* Garante que a imagem fique antes do texto */
 }
 
+.profile-section img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px; /* Tamanho padrão */
+  height: 600px; /* Tamanho padrão */
+  border-radius: 50%; /* Deixa a imagem totalmente redonda */
+  overflow: hidden; /* Garante que nada ultrapasse as bordas arredondadas */
+  background-color: #f0f0f0; /* Cor de fundo caso não tenha imagem */
+}
+
 .profile-pic {
   margin: 0 auto; /* Centraliza a imagem */
   width: 80%; /* Ajuste opcional para responsividade */

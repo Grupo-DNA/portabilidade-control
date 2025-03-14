@@ -1,6 +1,6 @@
 import './ContactUS.css';
 import logoRoxo from '../assets/LogoclubRoxo.png';
-import nutricionistaFoto from '../assets/tamiFoto.png'
+import nutricionistaFoto from '../assets/RafaFoto.jpg'
 const ContactUS =  () =>
     {
     return (
@@ -15,7 +15,7 @@ const ContactUS =  () =>
             <div className="profile-section">
               <img
                 src={nutricionistaFoto}
-                alt="Tamires Oliveira"
+                alt="Rafaela Amaral"
                 className="profile-pic"
               />
             </div>
@@ -26,8 +26,8 @@ const ContactUS =  () =>
               </p>
               <div className="button-group">
                 <button className="btn primary-btn"     onClick={() => window.open('https://www.dnaclub.com.br/', '_blank')}>Saiba mais</button>
-                <button className="btn secondary-btn"     onClick={() => window.open('https://api.whatsapp.com/send?phone=5555169962840&text=Ol%C3%A1!%20Vim%20pelo%20Portal%20de%20portabilidades.%20Gostaria%20de%20atendimento.', 
-                  '_blank')} >Agende sua consulta</button>
+                <button className="btn secondary-btn"     onClick={() => window.open('https://api.whatsapp.com/send?phone=5516988541789&text=Ol%C3%A1!%20Vim%20do%20portal%20de%20*Portabilidades*%20e%20gostaria%20de%20agendar%20um%20suporte%20p%C3%B3s-laudo.', 
+                  '_blank')} >Agende seu suporte pós laudo</button>
               </div>
             </div>
           </div>
