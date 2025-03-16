@@ -42,7 +42,7 @@ const UploadFormPage = () => {
         email: data.email,
         nome: data.nome,
         cpf: data.cpf,
-        sexo: data.sexo,
+        sexo: data.sexoSelecionado,
         produtoSelecionado: data.selectedProduct,
         nomeSelecionado: data.nomeSelecionado,
         responsavelPelosDados: data.legalResponsibility,
@@ -197,8 +197,8 @@ const UploadFormPage = () => {
         <div className='input-select'>
           <label>Sexo</label>
           <select {...register('sexoSelecionado', { required: true })}>
-            <option value="m">Masculino</option>
-            <option value="f">Feminino</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
           </select>
           {errors.sexoSelecionado && <p className="error-message">A seleção de sexo é obrigatória.</p>}
         </div>

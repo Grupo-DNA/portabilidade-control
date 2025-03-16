@@ -19,7 +19,7 @@ const CompatibilityPage = ({ compatibilityValue }) => {
         <p>Seus dados genéticos têm <b>{compatibilityValue2cases}% de compatibilidade</b> com as informações da <b>DNA Club.</b></p>
         <p>Seu <b>laudo já está sendo preparado</b> e você receberá um <b>e-mail com o acesso</b></p>
         <p> <b>Possui mais laudos para gerar com esta compra? </b>Entre em contato conosco pelo WhatsApp e te ajudamos!</p>
-        <button className="btn secondary-btn"     onClick={() => window.open('https://api.whatsapp.com/send?phone=5555169962840&text=Ol%C3%A1!%20Vim%20pelo%20Portal%20de%20portabilidades.%20Gostaria%20de%20atendimento.', 
+        <button className="btn secondary-btn"     onClick={() => window.open('https://api.whatsapp.com/send?phone=5516981954580&text=Ol%C3%A1!%20Vim%20pelo%20Portal%20de%20portabilidades.%20Gostaria%20de%20atendimento.', 
                   '_blank')} >Entrar em contato</button>
       </div>
       <ScrollArrow targetId="ecosystem-section" />

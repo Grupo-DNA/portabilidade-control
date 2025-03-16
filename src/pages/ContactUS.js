@@ -39,6 +39,6 @@ const ContactUS =  () =>
             />
           </footer>
         </div>
-      );
+      );  
 }
 export default ContactUS;
