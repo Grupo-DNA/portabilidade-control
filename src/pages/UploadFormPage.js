@@ -59,10 +59,16 @@ const UploadFormPage = () => {
       setIsLoading(false); // Desativa o estado de carregamento
     }
   };
-
+  
   const handleFileDrop = (acceptedFiles) => {
     if (acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0]);
+      const file = acceptedFiles[0];
+      const sanitizedFileName = file.name.replace(/\s+/g, "_"); // Substitui espaços por "_"
+      
+      // Criar um novo objeto File com o nome atualizado
+      const renamedFile = new File([file], sanitizedFileName, { type: file.type });
+  
+      setFile(renamedFile);
     }
   };
 
