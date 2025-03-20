@@ -1,6 +1,6 @@
 export const sendFormData = async (formData) => {
     try {
-      const response = await fetch('https://n8n.dnasoftware.duckdns.org/webhook/calculo_portabilidade', {
+      const response = await fetch('https://n8n.dnasoftware.org/webhook/calculo_portabilidade', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

@@ -13,7 +13,7 @@ const LoadingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://n8n.dnasoftware.duckdns.org/webhook/calculo_portabilidade?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`https://n8n.dnasoftware.org/webhook/calculo_portabilidade?email=${encodeURIComponent(email)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
